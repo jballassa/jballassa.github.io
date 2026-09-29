@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="pt-BR" class="sem-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jessica Ballassa Confeitaria · Vila Madalena</title>
+<meta name="description" content="Confeitaria artesanal na Vila Madalena. Peça pelo nosso delivery, encomende seu bolo ou fale com a gente no WhatsApp.">
+<meta name="theme-color" content="#FFFBF8">
+<meta property="og:title" content="Jessica Ballassa Confeitaria">
+<meta property="og:description" content="Aqui tem amor, carinho e muito sabor. Delivery, bolos por encomenda e retirada na Vila Madalena.">
+<meta property="og:image" content="https://jballassa.github.io/assets/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/selo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="css/jb.css?v=32">
+</head>
+<body>
+
+<p class="faixa">Delivery próprio direto do ateliê · Bolos por encomenda com 48h</p>
+
+<header class="topo">
+  <div class="wrap barra-topo">
+    <button class="menu-bt" id="menuBt" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir o menu"><i></i></button>
+    <a class="logo" href="#inicio" aria-label="Jessica Ballassa Confeitaria, início">
+      <img src="assets/selo-jb-256.png" alt="Jessica Ballassa Confeitaria" width="256" height="256">
+    </a>
+    <a class="pedir" id="topoPedir" href="#" rel="noopener">Pedir</a>
+  </div>
+  <nav class="nav-fios" aria-label="Seções">
+    <a href="#delivery">Delivery</a>
+    <a href="bolos.html">Bolos por encomenda</a>
+    <a href="#atelie">O ateliê</a>
+    <a href="#perguntas">Perguntas</a>
+    <a href="#" id="navWhats" rel="noopener">WhatsApp</a>
+  </nav>
+</header>
+<nav class="menu hide" id="menu" aria-label="Menu">
+  <a href="#delivery">Delivery <small>peça direto do ateliê</small></a>
+  <a href="bolos.html">Bolos por encomenda <small>monte o seu</small></a>
+  <a href="#atelie">O ateliê <small>endereço e horários</small></a>
+  <a href="#perguntas">Perguntas <small>como funciona</small></a>
+  <span class="fio" aria-hidden="true"></span>
+  <a href="#" id="menuWhats">WhatsApp <small>(11) 91770-3998</small></a>
+</nav>
+
+<main id="inicio">
+
+  <!-- ============ HERÓI ============ -->
+  <section class="heroi">
+    <div class="wrap grade">
+      <div class="texto-heroi surge">
+        <p class="eyebrow">Confeitaria artesanal · Vila Madalena</p>
+        <h1 class="display">Doces feitos à&nbsp;mão, <em>para adoçar os seus dias.</em></h1>
+        <p class="lead">Bolos de pote, bolos gelados, brownies e bolos inteiros por encomenda. Da cozinha da Jessica direto para você.</p>
+        <div class="botoes">
+          <a class="bt" id="btnDelivery" href="#" rel="noopener">Pedir delivery</a>
+          <a class="bt linha" href="bolos.html">Encomendar bolo</a>
+        </div>
+        <p class="status" id="status"><span class="luz"></span><span id="statusTx">Vila Madalena, São Paulo</span></p>
+      </div>
+      <figure class="arco surge">
+        <img src="assets/fotos/cookie-nutella.jpg" alt="Cookie recheado de Nutella sendo aberto com as mãos" width="1000" height="1250" fetchpriority="high">
+        <figcaption>Cookie Nutella, feito no ateliê</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ FORMAS DE PEDIR ============ -->
+  <div class="wrap faixa-garantias">
+    <ul class="garantias surge" aria-label="Formas de pedir">
+      <li><b>Delivery próprio</b><span>preços exclusivos no pedido direto</span></li>
+      <li><b>Retirada no ateliê</b><span>Rua Wisard, 598</span></li>
+      <li><b>Bolo por encomenda</b><span>com 48 horas de antecedência</span></li>
+      <li><b>Também nos apps</b><span>iFood, 99Food e Keeta</span></li>
+    </ul>
+  </div>
+
+  <!-- ============ MANIFESTO ============ -->
+  <section class="secao creme manifesto">
+    <div class="wrap surge">
+      <span class="ornamento" aria-hidden="true"></span>
+      <blockquote>Aqui tem amor, carinho e muito sabor.</blockquote>
+      <p class="texto">Receitas da Jessica, feitas à mão na nossa cozinha da Vila Madalena. Que possamos sempre adoçar os seus dias.</p>
+      <p class="assina">Jessica Ballassa</p>
+    </div>
+  </section>
+
+  <!-- ============ DELIVERY + QUERIDINHOS ============ -->
+  <section id="delivery" class="dividido">
+    <div class="painel">
+      <div class="surge">
+        <p class="eyebrow">Delivery da casa</p>
+        <h2 class="h2">Peça direto <em>do ateliê</em></h2>
+        <p class="texto">Compre direto com a gente e tenha preços exclusivos. Entrega na nossa região ou retirada no balcão.</p>
+        <div class="cupons" id="cupons"></div>
+        <div class="botoes" style="justify-content:center">
+          <a class="bt" id="btnDelivery2" href="#" rel="noopener">Fazer meu pedido</a>
+        </div>
+        <p style="margin:22px 0 0"><a class="link" id="lnkCardapio" href="#" rel="noopener">Ver o cardápio completo</a></p>
+      </div>
+    </div>
+    <div class="mosaico" id="queridinhos" aria-label="Os queridinhos">
+      <figure class="peca"><img src="assets/fotos/brownie-ninho-nutella.jpg" alt="Brownie Ninho e Nutella empilhado" loading="lazy" width="1000" height="1250"><figcaption><small>Brownies</small><b>Ninho e Nutella</b></figcaption></figure>
+      <figure class="peca"><img src="assets/fotos/bolo-gelado-supreme.jpg" alt="Fatia do Bolo Gelado Supreme" loading="lazy" width="800" height="1000"><figcaption><small>Bolo gelado</small><b>Supreme</b></figcaption></figure>
+      <figure class="peca"><img src="assets/fotos/mega-brigadeiro.jpg" alt="Dois mega brigadeiros com granulado" loading="lazy" width="800" height="1000"><figcaption><small>Docinhos</small><b>Mega Brigadeiro</b></figcaption></figure>
+      <figure class="peca"><img src="assets/fotos/brownie-brigadeiro.jpg" alt="Brownie recheado com brigadeiro" loading="lazy" width="800" height="1000"><figcaption><small>Brownies</small><b>Brigadeiro</b></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ ENCOMENDAS ============ -->
+  <section id="encomendas" class="dividido inverte">
+    <div class="painel pessego">
+      <div class="surge">
+        <p class="eyebrow">Bolos por encomenda</p>
+        <h2 class="h2">Um bolo inteiro, <em>do jeito que você imaginou</em></h2>
+        <p class="texto">Escolha o tamanho, a massa, o recheio e a decoração, e veja o valor na hora. A Jessica confirma tudo pelo WhatsApp.</p>
+        <div class="botoes" style="justify-content:center">
+          <a class="bt" href="bolos.html">Montar meu bolo</a>
+        </div>
+      </div>
+    </div>
+    <div class="painel creme">
+      <div class="cartao-menu surge">
+        <p class="sub">Cardápio de bolos</p>
+        <h3>Tamanhos</h3>
+        <dl>
+          <div class="ln"><dt>PP</dt><span class="pontilhado"></span><dd>13 cm · 10 fatias</dd></div>
+          <div class="ln"><dt>P</dt><span class="pontilhado"></span><dd>15 cm · 15 fatias</dd></div>
+          <div class="ln"><dt>M</dt><span class="pontilhado"></span><dd>17 cm · 20 fatias</dd></div>
+          <div class="ln"><dt>G</dt><span class="pontilhado"></span><dd>20 cm · 25 fatias</dd></div>
+        </dl>
+        <div class="fio"></div>
+        <div class="modelos">
+          <div><b>Naked cake</b><span>laterais aparentes, montado no acetato</span></div>
+          <div><b>Chantininho</b><span>espatulado liso, com decorações à escolha</span></div>
+        </div>
+        <p class="rodape-menu">Pedidos com 48 horas de antecedência</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ O ATELIÊ ============ -->
+  <section id="atelie" class="dividido">
+    <div class="painel claro">
+      <div class="surge">
+        <p class="eyebrow">O ateliê</p>
+        <h2 class="h2">Vila Madalena, <em>todos os dias</em></h2>
+        <p class="endereco" id="endTx">Rua Wisard, 598, Vila Madalena</p>
+        <dl class="horarios" id="horarios"></dl>
+        <div class="contatos">
+          <a class="bt linha" id="lnkMapa" href="#" rel="noopener">Como chegar</a>
+          <a class="bt linha" id="lnkWhats" href="#" rel="noopener">WhatsApp <span id="whatsTx">(11) 91770-3998</span></a>
+        </div>
+        <p class="miudo"><a id="lnkInsta" href="#" rel="noopener">@jballassaconfeitaria</a> no Instagram</p>
+      </div>
+    </div>
+    <figure class="foto-cheia"><img src="assets/fotos/atelie-bolos-de-pote.jpg" alt="Bolos de pote com a etiqueta da JB no ateliê" loading="lazy" width="900" height="1125"></figure>
+  </section>
+
+  <!-- ============ PERGUNTAS ============ -->
+  <section id="perguntas" class="secao">
+    <div class="wrap">
+      <div class="centro surge">
+        <p class="eyebrow">Perguntas</p>
+        <h2 class="h2">Como <em>funciona</em></h2>
+      </div>
+      <div class="perguntas surge">
+        <details>
+          <summary>Com quanto tempo preciso encomendar um bolo?</summary>
+          <p>Com pelo menos 48 horas. Na página de encomenda o calendário já mostra o primeiro dia possível.</p>
+        </details>
+        <details>
+          <summary>Como funciona o pagamento da encomenda?</summary>
+          <p>Um sinal de 50% no Pix reserva a sua data, depois que a Jessica confirma o pedido pelo WhatsApp. O restante é pago na retirada.</p>
+        </details>
+        <details>
+          <summary>Vocês entregam o bolo inteiro?</summary>
+          <p>O bolo é retirado no ateliê, na Rua Wisard, 598. Se preferir, você pode enviar um Uber Flash na categoria carro, porque bolo não viaja bem de moto. A corrida fica por sua conta.</p>
+        </details>
+        <details>
+          <summary>Onde vocês entregam os doces do dia a dia?</summary>
+          <p>Pelo nosso delivery próprio. Ao colocar o seu endereço, o site mostra na hora se ele está na área de entrega e quanto custa o frete.</p>
+        </details>
+        <details>
+          <summary>Posso pedir uma decoração que não está na lista?</summary>
+          <p>Pode. No montador há um campo para descrever o que você imaginou, e a Jessica responde com o orçamento no WhatsApp.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APPS ============ -->
+  <section class="secao creme apps-linha" id="apps-sec" style="padding:48px 0">
+    <div class="wrap surge">
+      <p class="eyebrow" style="margin-bottom:0">Também estamos nos aplicativos</p>
+      <p class="miudo" id="notasTx" style="margin-top:8px"></p>
+      <div class="apps" id="apps"></div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL ============ -->
+  <section class="secao final">
+    <div class="wrap surge">
+      <span class="script" aria-hidden="true">com amor,</span>
+      <h2 class="h2">Vamos adoçar <em>o seu dia?</em></h2>
+      <p class="texto" style="margin-left:auto;margin-right:auto">Dúvida, pedido grande, evento ou um bolo especial: fale direto com a gente.</p>
+      <div class="botoes" style="justify-content:center">
+        <a class="bt" id="btnWhatsFinal" href="#" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <img class="marca" src="assets/selo-jb-256.png" alt="Jessica Ballassa Confeitaria" width="256" height="256">
+    <p class="lema">Aqui tem amor, carinho e muito sabor.</p>
+    <nav aria-label="Rodapé">
+      <a href="#delivery">Delivery</a>
+      <a href="bolos.html">Encomendas</a>
+      <a href="#atelie">O ateliê</a>
+      <a href="#" id="rodInsta" rel="noopener">Instagram</a>
+    </nav>
+    <div class="fim"><span id="rodEnd">Rua Wisard, 598 · Vila Madalena, São Paulo</span><span>© 2026 Jessica Ballassa Confeitaria</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/config.js?v=32"></script>
+<script src="js/comum.js?v=32"></script>
+<script>
+(function(){
+  const J = window.JB;
+  ["btnDelivery","btnDelivery2","lnkCardapio","topoPedir"].forEach(id => $(id).href = J.delivery);
+  const wa = linkWhats("Oi, Jessica! Vim pelo Instagram :)");
+  ["lnkWhats","btnWhatsFinal","menuWhats","navWhats"].forEach(id => $(id).href = wa);
+  $("whatsTx").textContent = J.whatsTexto;
+  $("lnkMapa").href = J.mapa;
+  $("endTx").textContent = J.endereco + ", " + J.bairro.split(",")[0];
+  $("lnkInsta").href = J.instagram; $("rodInsta").href = J.instagram;
+
+  /* cupons que copiam com um toque */
+  const cx = $("cupons");
+  J.cupons.forEach(c => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "cupom";
+    b.innerHTML = "<div><b></b><span></span></div><small>tocar para copiar</small>";
+    b.querySelector("b").textContent = c.codigo;
+    b.querySelector("span").textContent = (c.texto + ", " + c.regra).replace(/R\$ /g, "R$ ");
+    b.setAttribute("aria-label", "Copiar cupom " + c.codigo + ": " + c.texto + ", " + c.regra);
+    b.onclick = () => copiar(c.codigo, "Cupom " + c.codigo + " copiado. É só colar no pedido.");
+    cx.appendChild(b);
+  });
+
+  /* apps, em segundo plano */
+  const ax = $("apps");
+  J.apps.forEach(a => {
+    const el = document.createElement(a.url ? "a" : "div");
+    el.className = "app" + (a.url ? "" : " sem-link");
+    const b = document.createElement("b"); b.textContent = a.nome;
+    const s = document.createElement("small"); s.textContent = a.url ? "abrir" : "procure JB Confeitaria";
+    el.append(b);
+    if(a.nota){ const n = document.createElement("span"); n.className = "nota"; n.textContent = a.nota; el.append(n); }
+    el.append(s);
+    if(a.url){ el.href = a.url; el.rel = "noopener"; }
+    ax.appendChild(el);
+  });
+
+  if(J.notasData) $("notasTx").textContent = "Avaliação dos clientes em cada aplicativo, " + J.notasData + ".";
+  montarHorarios($("horarios"));
+  pintarStatus($("status"), $("statusTx"));
+  ligarMenu();
+  ligarSurge();
+})();
+</script>
+</body>
+</html>

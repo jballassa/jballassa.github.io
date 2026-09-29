@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="pt-BR" class="sem-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bolos por encomenda · Jessica Ballassa</title>
+<meta name="description" content="Monte o seu bolo: naked cake ou chantininho, massa, recheio e decoração, com o valor na hora. Encomendas com 48 horas de antecedência.">
+<meta name="theme-color" content="#FFFBF8">
+<meta property="og:title" content="Bolos por encomenda · Jessica Ballassa Confeitaria">
+<meta property="og:description" content="Monte o seu bolo e veja o valor na hora. Encomendas com 48 horas de antecedência.">
+<meta property="og:image" content="https://jballassa.github.io/assets/og.jpg">
+<link rel="icon" href="assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/selo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="css/jb.css?v=32">
+<link rel="stylesheet" href="css/bolos.css?v=32">
+</head>
+<body>
+
+<p class="faixa">Encomendas com 48 horas de antecedência · 50% de sinal no Pix</p>
+
+<header class="topo">
+  <div class="wrap barra-topo">
+    <button class="menu-bt" id="menuBt" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir o menu"><i></i></button>
+    <a class="logo" href="index.html" aria-label="Jessica Ballassa Confeitaria, página inicial">
+      <img src="assets/selo-jb-256.png" alt="Jessica Ballassa Confeitaria" width="256" height="256">
+    </a>
+    <a class="pedir" href="#monta">Montar</a>
+  </div>
+  <nav class="nav-fios" aria-label="Seções">
+    <a href="index.html">Início</a>
+    <a href="#sabores">Sabores da casa</a>
+    <a href="#monta">Monte o seu</a>
+    <a href="index.html#delivery">Delivery</a>
+    <a href="#" id="navWhats" rel="noopener">WhatsApp</a>
+  </nav>
+</header>
+<nav class="menu hide" id="menu" aria-label="Menu">
+  <a href="index.html">Início <small>a confeitaria</small></a>
+  <a href="#sabores">Sabores da casa <small>as combinações da Jessica</small></a>
+  <a href="#monta">Monte o seu <small>passo a passo</small></a>
+  <a href="index.html#delivery">Delivery <small>doces do dia a dia</small></a>
+  <span class="fio" aria-hidden="true"></span>
+  <a href="#" id="menuWhats">WhatsApp <small>(11) 91770-3998</small></a>
+</nav>
+
+<main class="pagina" id="pagina">
+
+  <!-- ============ CAPA ============ -->
+  <section class="capa">
+    <div class="wrap grade-capa">
+      <div class="texto-capa surge">
+        <p class="eyebrow">Bolos por encomenda</p>
+        <h1 class="display">Um bolo do&nbsp;jeito <em>que você imaginou.</em></h1>
+        <p class="lead">Feito à mão, camada por camada. Escolha o tamanho, o modelo, a massa e o recheio, e veja o valor na hora.</p>
+        <p class="status aberto"><span class="luz"></span><span id="proxData">Mínimo de 48 horas de antecedência</span></p>
+      </div>
+      <div class="cartao-menu passos surge" aria-label="Como funciona">
+        <p class="sub">Como funciona</p>
+        <ol>
+          <li><i>I</i><div><b>Monte o seu bolo aqui</b><span>O valor aparece enquanto você escolhe.</span></div></li>
+          <li><i>II</i><div><b>Envie pelo WhatsApp</b><span>O pedido chega pronto para a Jessica.</span></div></li>
+          <li><i>III</i><div><b>50% no Pix reserva a data</b><span>O restante é pago na retirada.</span></div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="wrap">
+      <ul class="garantias surge" aria-label="Como funciona a encomenda">
+        <li><b>48 horas</b><span>de antecedência, no mínimo</span></li>
+        <li><b>Sinal de 50%</b><span>no Pix reserva a data</span></li>
+        <li><b>Retirada no ateliê</b><span>ou pelo Uber Flash carro</span></li>
+        <li><b>Confirmação</b><span>da Jessica pelo WhatsApp</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SABORES DA CASA ============ -->
+  <section class="secao creme bloco" id="sabores" aria-labelledby="t-casa">
+    <div class="wrap">
+      <div class="centro surge">
+        <p class="eyebrow">Sabores da casa</p>
+        <h2 class="h2" id="t-casa">As combinações <em>da Jessica</em></h2>
+        <p class="texto">Toque em um sabor para começar por ele. Depois é só escolher o tamanho e o acabamento.</p>
+      </div>
+      <div class="casa" id="casa"></div>
+    </div>
+  </section>
+
+  <!-- ============ MONTADOR ============ -->
+  <form id="monta" class="secao" novalidate aria-labelledby="t-monta">
+    <div class="wrap">
+      <div class="centro surge">
+        <p class="eyebrow">Monte o seu</p>
+        <h2 class="h2" id="t-monta">Seu bolo, <em>passo a passo</em></h2>
+      </div>
+
+      <div class="monta-grade">
+        <div class="etapas">
+
+          <fieldset class="etapa" id="etTamanho">
+            <legend><span class="n">01</span>Tamanho</legend>
+            <div class="opcoes quatro" id="opTamanho"></div>
+          </fieldset>
+
+          <fieldset class="etapa" id="etModelo">
+            <legend><span class="n">02</span>Modelo</legend>
+            <div class="opcoes duas" id="opModelo"></div>
+          </fieldset>
+
+          <fieldset class="etapa" id="etMassa">
+            <legend><span class="n">03</span>Massa</legend>
+            <div class="opcoes" id="opMassa"></div>
+          </fieldset>
+
+          <fieldset class="etapa" id="etRecheio">
+            <legend><span class="n">04</span>Recheio</legend>
+            <div class="alterna" role="radiogroup" aria-label="Tipo de recheio">
+              <button type="button" id="modoRecheio" aria-pressed="true">Um recheio</button>
+              <button type="button" id="modoCombinacao" aria-pressed="false">Combinação da casa</button>
+            </div>
+            <div class="opcoes" id="opRecheio"></div>
+            <div class="opcoes hide" id="opCombinacao"></div>
+          </fieldset>
+
+          <fieldset class="etapa" id="etAdicional">
+            <legend><span class="n">05</span>Para completar <small>opcional</small></legend>
+            <div class="opcoes" id="opAdicional"></div>
+          </fieldset>
+
+          <fieldset class="etapa hide" id="etDecoracao">
+            <legend><span class="n">06</span>Decoração do chantininho</legend>
+            <p class="nota">O chantininho já vem espatulado liso em uma cor. Se quiser mais, escolha abaixo.</p>
+            <label class="campo">Cor do chantininho
+              <input type="text" id="cor" maxlength="40" placeholder="ex.: rosa bebê, branco, lilás">
+            </label>
+            <div class="opcoes" id="opDecoracao"></div>
+            <label class="campo hide" id="lbEscrita">O que vai escrito
+              <input type="text" id="escrita" maxlength="60" placeholder="ex.: Feliz aniversário, Ana">
+            </label>
+            <p class="mini">Acabamento</p>
+            <div class="opcoes" id="opAcabamento"></div>
+            <label class="campo">Quer algo diferente? <small>fazemos um orçamento</small>
+              <textarea id="outro" rows="2" maxlength="300" placeholder="Topper, flores, uma referência de foto..."></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset class="etapa" id="etRetirada">
+            <legend><span class="n" id="nRetirada">06</span>Quando e como</legend>
+            <div class="linha2">
+              <label class="campo">Dia
+                <input type="date" id="data" required>
+              </label>
+              <label class="campo">Horário
+                <select id="hora" required><option value="">escolha o dia</option></select>
+              </label>
+            </div>
+            <p class="nota" id="notaData"></p>
+            <div class="opcoes" id="opForma"></div>
+          </fieldset>
+
+          <fieldset class="etapa" id="etDados">
+            <legend><span class="n" id="nDados">07</span>Seus dados</legend>
+            <label class="campo">Seu nome
+              <input type="text" id="nome" autocomplete="name" maxlength="80" required>
+            </label>
+            <label class="campo">Seu WhatsApp
+              <input type="tel" id="whats" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="(11) 90000-0000" required>
+            </label>
+            <label class="campo">Ocasião <small>opcional</small>
+              <input type="text" id="ocasiao" maxlength="60" placeholder="aniversário, chá, casamento...">
+            </label>
+            <label class="campo">Observações <small>opcional</small>
+              <textarea id="obs" rows="2" maxlength="500" placeholder="alergias, preferências, detalhes"></textarea>
+            </label>
+          </fieldset>
+        </div>
+
+        <!-- Resumo, como uma comanda -->
+        <aside class="lado">
+          <section class="resumo" id="resumo" aria-live="polite">
+            <div class="cab"><img src="assets/selo-jb-256.png" alt="" width="44" height="44"><p class="sub">Jessica Ballassa · encomenda</p><h3>Seu pedido</h3></div>
+            <div id="resumoLinhas"><p class="vazio">Escolha o tamanho e o modelo para ver o valor.</p></div>
+            <div class="totais hide" id="totais">
+              <div class="tot"><span>Total</span><b id="total">R$ 0,00</b></div>
+              <div class="sinal"><span>Sinal de 50% para reservar a data</span><b id="sinal">R$ 0,00</b></div>
+            </div>
+            <p class="aviso hide" id="avisoOrc">Como você pediu algo fora da lista, a Jessica confirma o valor final no WhatsApp.</p>
+            <p class="erro hide" id="erro" role="alert"></p>
+            <button type="submit" class="bt cheio" id="enviar">Enviar pedido pelo WhatsApp</button>
+            <p class="letra">A data só fica reservada depois que a Jessica confirmar e o sinal de 50% cair no Pix. O restante é pago na retirada.</p>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </form>
+
+  <!-- ============ DÚVIDAS ============ -->
+  <section class="secao creme bloco" id="duvidas">
+    <div class="wrap">
+      <div class="centro surge">
+        <p class="eyebrow">Antes de pedir</p>
+        <h2 class="h2">Dúvidas <em>frequentes</em></h2>
+      </div>
+      <div class="perguntas surge">
+        <details>
+          <summary>Cada tamanho serve quantas pessoas?</summary>
+          <p id="porcoes">PP: 13 cm, cerca de 10 fatias · P: 15 cm, cerca de 15 fatias · M: 17 cm, cerca de 20 fatias · G: 20 cm, cerca de 25 fatias.</p>
+        </details>
+        <details>
+          <summary>Como é a retirada?</summary>
+          <p id="retiradaTx">No ateliê, na Rua Wisard, 598. Se preferir, envie um Uber Flash na categoria carro: bolo não viaja bem de moto, e a corrida fica por sua conta.</p>
+        </details>
+        <details>
+          <summary>Como funciona o pagamento?</summary>
+          <p>Depois que a Jessica confirma o pedido pelo WhatsApp, um sinal de 50% no Pix reserva a sua data. O restante é pago na retirada.</p>
+        </details>
+        <details>
+          <summary>Posso pedir uma decoração diferente?</summary>
+          <p>Pode. No chantininho há um campo para descrever o que você imaginou, com uma referência se tiver. A Jessica responde com o orçamento no WhatsApp.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DEPOIS DE ENVIAR ============ -->
+  <section class="secao feito hide" id="feito" tabindex="-1" aria-live="polite">
+    <div class="wrap centro">
+      <span class="ornamento" aria-hidden="true"></span>
+      <p class="eyebrow">Pedido enviado</p>
+      <h2 class="display">Obrigada, <em id="feitoNome"></em></h2>
+      <p class="codigo" id="feitoCodigo"></p>
+      <p class="lead" id="feitoTexto"></p>
+      <div class="botoes">
+        <a class="bt" id="feitoWhats" href="#" rel="noopener">Abrir o WhatsApp</a>
+        <button type="button" class="bt linha" id="outroPedido">Montar outro bolo</button>
+      </div>
+      <p class="script" style="font-size:1.5rem;margin:34px 0 0">com carinho, Jessica</p>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <img class="marca" src="assets/selo-jb-256.png" alt="Jessica Ballassa Confeitaria" width="256" height="256">
+    <p class="lema">Aqui tem amor, carinho e muito sabor.</p>
+    <nav aria-label="Rodapé">
+      <a href="index.html">Início</a>
+      <a href="index.html#delivery">Delivery</a>
+      <a href="index.html#atelie">O ateliê</a>
+      <a href="#" id="rodWhats" rel="noopener">WhatsApp</a>
+    </nav>
+    <div class="fim"><span id="rodEnd"></span><span>© 2026 Jessica Ballassa Confeitaria</span></div>
+  </div>
+</footer>
+
+<!-- Barra que acompanha a rolagem -->
+<div class="barra hide" id="barra">
+  <div><small>Total</small><b id="barraTotal">R$ 0,00</b></div>
+  <button type="button" id="barraIr">Revisar pedido</button>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/config.js?v=32"></script>
+<script src="js/comum.js?v=32"></script>
+<script src="js/bolos.js?v=32"></script>
+<script>
+(function(){
+  const wa = linkWhats("Oi, Jessica! Queria falar sobre um bolo por encomenda :)");
+  $("menuWhats").href = wa; $("rodWhats").href = wa; $("navWhats").href = wa;
+  ligarMenu();
+  ligarSurge();
+})();
+</script>
+</body>
+</html>
