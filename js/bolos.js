@@ -76,6 +76,23 @@ function fatiaSVG(sc){
   return svg;
 }
 
+/* Fotos de contexto de cada escolha (assets/bolos/<id>.webp). Se um dia o banco
+   trouxer foto_url na opção, ela vale no lugar da daqui. */
+const FOTOS = ["cmb_perfeito","cmb_classico","cmb_brownie","rec_kinder"];   // só os sabores da casa
+function fotoDe(o){
+  if(!o) return null;
+  if(o.foto_url) return o.foto_url;
+  return FOTOS.includes(o.id) ? "assets/bolos/" + o.id + ".webp?v=34" : null;
+}
+function imgFoto(src, larg, alt){
+  const f = document.createElement("span"); f.className = "ft";
+  const i = document.createElement("img");
+  i.src = src; i.alt = alt || ""; i.loading = "lazy"; i.decoding = "async";
+  i.width = larg; i.height = larg;
+  f.appendChild(i);
+  return f;
+}
+
 let OPC = [];
 const S = {
   tamanho:null, modelo:null, massa:null,
@@ -109,9 +126,9 @@ async function carregarCardapio(){
 }
 
 /* ---------------- desenhar ---------------- */
-function opcao({ tipo, nome, valor, marcado, titulo, sub, direita, classe, premium, aoMudar }){
+function opcao({ tipo, nome, valor, marcado, titulo, sub, direita, classe, premium, aoMudar, foto }){
   const lb = document.createElement("label");
-  lb.className = "op" + (tipo === "checkbox" ? " caixa" : "") + (classe ? " " + classe : "") + (marcado ? " on" : "");
+  lb.className = "op" + (tipo === "checkbox" ? " caixa" : "") + (classe ? " " + classe : "") + (foto ? " foto" : "") + (marcado ? " on" : "");
   const inp = document.createElement("input");
   inp.type = tipo; inp.name = nome; inp.value = valor; inp.checked = !!marcado;
   inp.addEventListener("change", () => aoMudar(inp.checked));
@@ -121,6 +138,13 @@ function opcao({ tipo, nome, valor, marcado, titulo, sub, direita, classe, premi
   if(premium){ const p = document.createElement("span"); p.className = "premium"; p.textContent = "premium"; b.appendChild(p); }
   tx.appendChild(b);
   if(sub){ const s = document.createElement("span"); s.textContent = sub; tx.appendChild(s); }
+  if(foto){
+    const ln = document.createElement("span"); ln.className = "linha";
+    ln.append(m, tx);
+    if(direita != null){ const d = document.createElement("span"); d.className = "pr"; d.textContent = direita; ln.appendChild(d); }
+    lb.append(inp, imgFoto(foto, 480), ln);
+    return lb;
+  }
   lb.append(inp, m, tx);
   if(direita != null){ const d = document.createElement("span"); d.className = "pr"; d.textContent = direita; lb.appendChild(d); }
   return lb;
@@ -151,7 +175,11 @@ function desenharCasa(){
     d.textContent = op.descricao || (sc.tipo === "recheio" ? "Recheio premium de Kinder Bueno" : "");
     const pr = document.createElement("span"); pr.className = "pr";
     pr.textContent = rotuloPreco(op);
-    b.append(t, d, pr);
+    const corpo = document.createElement("span"); corpo.className = "corpo";
+    corpo.append(t, d, pr);
+    const f = fotoDe(op);
+    if(f){ const im = imgFoto(f, 480); im.querySelector("img").height = 600; b.append(im); }
+    b.append(corpo);
     b.onclick = () => escolherSaborDaCasa(sc);
     cx.appendChild(b);
   });
