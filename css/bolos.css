@@ -22,23 +22,22 @@
 .passos b{display:block;font-family:var(--serif);font-weight:600;font-size:1.22rem;color:var(--cacau);line-height:1.2;}
 .passos span{display:block;font-size:.84rem;margin-top:2px;line-height:1.5;}
 
-/* ---------- sabores da casa: cartões de vitrine ---------- */
-.casa{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:38px;}
-@media (min-width:960px){ .casa{grid-template-columns:repeat(4,1fr);gap:16px;} }
+/* ---------- sabores da casa: cartões dentro do passo do recheio ---------- */
+.comecar{margin-top:22px;}
+.casa-k{color:var(--coral-tx) !important;margin-top:0 !important;}
+.casa{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 6px;}
 .sabor{
-  display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;width:100%;cursor:pointer;
-  background:var(--papel);border:1px solid var(--linha);border-radius:0;padding:24px 12px 20px;color:var(--cacau-2);
+  position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;width:100%;cursor:pointer;
+  background:var(--creme);border:1px solid var(--linha);border-radius:0;padding:14px 12px 12px;color:var(--cacau-2);font:inherit;
   transition:border-color .2s ease, background .2s ease;
 }
 .sabor:hover{border-color:var(--cacau-3);}
-.sabor .fatia{flex:0 0 auto;width:64px;height:60px;}
-.sabor .tx{min-width:0;}
-.sabor .tx small{display:block;font-size:.52rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--coral-tx);}
-.sabor .tx b{display:block;font-family:var(--serif);font-weight:500;font-size:1.4rem;line-height:1.1;color:var(--cacau);margin-top:6px;}
-.sabor .tx span{display:block;font-size:.76rem;line-height:1.45;margin-top:6px;}
-.sabor .pr{font-size:.52rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--cacau-3);margin-top:auto;padding-top:10px;border-top:1px solid var(--linha);width:70%;}
-.sabor .pr b{display:block;font-family:var(--serif);font-size:1.2rem;letter-spacing:0;text-transform:none;color:var(--cacau);font-weight:600;margin-top:2px;font-variant-numeric:lining-nums;}
+.sabor b{display:block;font-family:var(--serif);font-weight:600;font-size:1.18rem;line-height:1.15;color:var(--cacau);padding-right:14px;}
+.sabor span{display:block;font-size:.74rem;line-height:1.4;margin-top:4px;}
+.sabor .pr{font-size:.8rem;color:var(--cacau);margin-top:auto;padding-top:8px;font-variant-numeric:tabular-nums;}
 .sabor.on{background:var(--blush);border-color:var(--cacau);}
+.sabor.on::after{content:"✓";position:absolute;top:9px;right:10px;color:var(--cacau);font-size:.9rem;}
+.casa + .sub-escolha{margin:6px 0 4px 0;}
 
 /* ---------- montador ---------- */
 .monta-grade{display:grid;gap:40px;margin-top:20px;}
@@ -197,4 +196,3 @@
 @media (min-width:520px){ .barra{justify-content:center;gap:40px;} }
 @media (min-width:980px){ .barra{display:none !important;} }
 body .toast{bottom:92px;}
-.sabor::before{content:"";display:block;width:26px;height:1px;background:var(--pessego);margin:4px auto 6px;}

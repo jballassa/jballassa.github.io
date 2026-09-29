@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="css/jb.css?v=32">
-<link rel="stylesheet" href="css/bolos.css?v=32">
+<link rel="stylesheet" href="css/jb.css?v=33">
+<link rel="stylesheet" href="css/bolos.css?v=33">
 </head>
 <body>
 
@@ -31,7 +31,7 @@
   </div>
   <nav class="nav-fios" aria-label="Seções">
     <a href="index.html">Início</a>
-    <a href="#sabores">Sabores da casa</a>
+    <a href="#etRecheio">Sabores da casa</a>
     <a href="#monta">Monte o seu</a>
     <a href="index.html#delivery">Delivery</a>
     <a href="#" id="navWhats" rel="noopener">WhatsApp</a>
@@ -39,7 +39,7 @@
 </header>
 <nav class="menu hide" id="menu" aria-label="Menu">
   <a href="index.html">Início <small>a confeitaria</small></a>
-  <a href="#sabores">Sabores da casa <small>as combinações da Jessica</small></a>
+  <a href="#etRecheio">Sabores da casa <small>as combinações da Jessica</small></a>
   <a href="#monta">Monte o seu <small>passo a passo</small></a>
   <a href="index.html#delivery">Delivery <small>doces do dia a dia</small></a>
   <span class="fio" aria-hidden="true"></span>
@@ -55,6 +55,7 @@
         <p class="eyebrow">Bolos por encomenda</p>
         <h1 class="display">Um bolo do&nbsp;jeito <em>que você imaginou.</em></h1>
         <p class="lead">Feito à mão, camada por camada. Escolha o tamanho, o modelo, a massa e o recheio, e veja o valor na hora.</p>
+        <a class="bt cheio comecar" href="#monta">Começar meu bolo</a>
         <p class="status aberto"><span class="luz"></span><span id="proxData">Mínimo de 48 horas de antecedência</span></p>
       </div>
       <div class="cartao-menu passos surge" aria-label="Como funciona">
@@ -73,18 +74,6 @@
         <li><b>Retirada no ateliê</b><span>ou pelo Uber Flash carro</span></li>
         <li><b>Confirmação</b><span>da Jessica pelo WhatsApp</span></li>
       </ul>
-    </div>
-  </section>
-
-  <!-- ============ SABORES DA CASA ============ -->
-  <section class="secao creme bloco" id="sabores" aria-labelledby="t-casa">
-    <div class="wrap">
-      <div class="centro surge">
-        <p class="eyebrow">Sabores da casa</p>
-        <h2 class="h2" id="t-casa">As combinações <em>da Jessica</em></h2>
-        <p class="texto">Toque em um sabor para começar por ele. Depois é só escolher o tamanho e o acabamento.</p>
-      </div>
-      <div class="casa" id="casa"></div>
     </div>
   </section>
 
@@ -116,12 +105,10 @@
 
           <fieldset class="etapa" id="etRecheio">
             <legend><span class="n">04</span>Recheio</legend>
-            <div class="alterna" role="radiogroup" aria-label="Tipo de recheio">
-              <button type="button" id="modoRecheio" aria-pressed="true">Um recheio</button>
-              <button type="button" id="modoCombinacao" aria-pressed="false">Combinação da casa</button>
-            </div>
+            <p class="mini casa-k">Sabores da casa · as combinações da Jessica</p>
+            <div class="casa" id="casa" role="group" aria-label="Sabores da casa"></div>
+            <p class="mini">Ou escolha um recheio</p>
             <div class="opcoes" id="opRecheio"></div>
-            <div class="opcoes hide" id="opCombinacao"></div>
           </fieldset>
 
           <fieldset class="etapa" id="etAdicional">
@@ -257,15 +244,15 @@
 
 <!-- Barra que acompanha a rolagem -->
 <div class="barra hide" id="barra">
-  <div><small>Total</small><b id="barraTotal">R$ 0,00</b></div>
+  <div><small id="barraK">Total</small><b id="barraTotal">R$ 0,00</b></div>
   <button type="button" id="barraIr">Revisar pedido</button>
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/config.js?v=32"></script>
-<script src="js/comum.js?v=32"></script>
-<script src="js/bolos.js?v=32"></script>
+<script src="js/config.js?v=33"></script>
+<script src="js/comum.js?v=33"></script>
+<script src="js/bolos.js?v=33"></script>
 <script>
 (function(){
   const wa = linkWhats("Oi, Jessica! Queria falar sobre um bolo por encomenda :)");

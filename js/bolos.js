@@ -134,28 +134,43 @@ function rotuloPreco(op, base){
   return (base ? "" : "+ ") + (semTam ? "a partir de " : "") + reais(v).replace(",00", "");
 }
 
+/* Os sabores da casa moram no passo 04: cartões com o acréscimo já no tamanho
+   escolhido. Escolher um cartão é o mesmo que escolher o recheio. */
 function desenharCasa(){
   const cx = $("casa"); cx.innerHTML = "";
-  const naked = achar("mod_naked");
   SABORES_CASA.forEach(sc => {
     const op = achar(sc.id);
     if(!op) return;
+    const on = sc.tipo === "combinacao" ? S.combinacao === sc.id : S.recheio === sc.id;
     const b = document.createElement("button");
-    b.type = "button"; b.className = "sabor";
+    b.type = "button"; b.className = "sabor" + (on ? " on" : "");
     b.dataset.id = sc.id;
-    const tx = document.createElement("span"); tx.className = "tx";
-    const n = document.createElement("small"); n.textContent = "Sabor · " + String(cx.children.length + 1).padStart(2, "0");
+    b.setAttribute("aria-pressed", String(on));
     const t = document.createElement("b"); t.textContent = op.nome;
     const d = document.createElement("span");
     d.textContent = op.descricao || (sc.tipo === "recheio" ? "Recheio premium de Kinder Bueno" : "");
-    tx.append(n, t, d);
     const pr = document.createElement("span"); pr.className = "pr";
-    pr.innerHTML = "a partir de<b></b>";
-    pr.querySelector("b").textContent = reais(preco(naked, "tam_pp") + preco(op, "tam_pp")).replace(",00", "");
-    b.append(tx, pr);
+    pr.textContent = rotuloPreco(op);
+    b.append(t, d, pr);
     b.onclick = () => escolherSaborDaCasa(sc);
     cx.appendChild(b);
   });
+  /* duo brownie: escolher o creme logo abaixo dos cartões */
+  const velho = cx.parentNode.querySelector(".casa + .sub-escolha");
+  if(velho) velho.remove();
+  const combo = achar(S.combinacao);
+  if(combo && combo.detalhe && combo.detalhe.escolha){
+    const sub = document.createElement("div"); sub.className = "sub-escolha";
+    sub.setAttribute("role", "group"); sub.setAttribute("aria-label", "Escolha o creme do " + combo.nome);
+    combo.detalhe.escolha.forEach(e => {
+      const b = document.createElement("button");
+      b.type = "button"; b.textContent = e;
+      b.setAttribute("aria-pressed", String(S.escolha === e));
+      b.onclick = () => { S.escolha = e; atualizar(); };
+      sub.appendChild(b);
+    });
+    cx.after(sub);
+  }
 }
 
 function desenharTamanhos(){
@@ -192,13 +207,14 @@ function desenharModelos(){
 
 function desenharLista(cxId, g, nomeInput, chave){
   const cx = $(cxId); cx.innerHTML = "";
-  grupo(g).forEach(o => {
+  const daCasa = SABORES_CASA.map(sc => sc.id);
+  grupo(g).filter(o => g !== "recheio" || !daCasa.includes(o.id)).forEach(o => {
     const v = preco(o, S.tamanho || "tam_pp");
     cx.appendChild(opcao({
       tipo:"radio", nome:nomeInput, valor:o.id, marcado:S[chave] === o.id,
       titulo:o.nome, sub:o.descricao, premium:o.premium,
       direita: v ? rotuloPreco(o) : null,
-      aoMudar: x => { if(x){ S[chave] = o.id; if(chave === "combinacao") S.escolha = null; atualizar(); } }
+      aoMudar: x => { if(x){ S[chave] = o.id; if(chave === "recheio"){ S.combinacao = null; S.escolha = null; } atualizar(); } }
     }));
     /* duo brownie: escolher o creme */
     if(g === "combinacao" && o.detalhe && o.detalhe.escolha && S.combinacao === o.id){
@@ -354,12 +370,13 @@ function atualizar(){
   const lembrar = foco && foco.matches && foco.matches(".op input") ? { n: foco.name, v: foco.value } : null;
   const chant = S.modelo === "mod_chant";
   if(!chant){ S.decoracao = null; S.acabamento = false; }
+  S.modo = S.combinacao ? "combinacao" : "recheio";
 
   desenharTamanhos();
   desenharModelos();
   desenharLista("opMassa", "massa", "massa", "massa");
+  desenharCasa();
   desenharLista("opRecheio", "recheio", "recheio", "recheio");
-  desenharLista("opCombinacao", "combinacao", "combinacao", "combinacao");
   desenharAdicionais();
   if(chant) desenharDecoracao();
   desenharForma();
@@ -368,16 +385,6 @@ function atualizar(){
   $("nRetirada").textContent = chant ? "07" : "06";
   $("nDados").textContent = chant ? "08" : "07";
   $("lbEscrita").classList.toggle("hide", S.decoracao !== "dec_escrita");
-
-  $("modoRecheio").setAttribute("aria-pressed", String(S.modo === "recheio"));
-  $("modoCombinacao").setAttribute("aria-pressed", String(S.modo === "combinacao"));
-  $("opRecheio").classList.toggle("hide", S.modo !== "recheio");
-  $("opCombinacao").classList.toggle("hide", S.modo !== "combinacao");
-
-  document.querySelectorAll("#casa .sabor").forEach(b => {
-    b.classList.toggle("on", (S.modo === "combinacao" && S.combinacao === b.dataset.id)
-                          || (S.modo === "recheio" && S.recheio === b.dataset.id));
-  });
 
   pintarResumo();
   if(lembrar){
@@ -417,13 +424,9 @@ function pintarResumo(){
 
 /* ---------------- sabores da casa ---------------- */
 function escolherSaborDaCasa(sc){
-  if(sc.tipo === "combinacao"){ S.modo = "combinacao"; S.combinacao = sc.id; S.recheio = null; S.escolha = null; }
-  else { S.modo = "recheio"; S.recheio = sc.id; S.combinacao = null; }
+  if(sc.tipo === "combinacao"){ S.combinacao = sc.id; S.recheio = null; S.escolha = null; }
+  else { S.recheio = sc.id; S.combinacao = null; S.escolha = null; }
   atualizar();
-  const nome = (achar(sc.id) || {}).nome || "";
-  const alvo = !S.tamanho ? "etTamanho" : (sc.id === "cmb_brownie" ? "etRecheio" : "etModelo");
-  toast(nome + " escolhido." + (!S.tamanho ? " Agora o tamanho." : ""));
-  $(alvo).scrollIntoView({ behavior:"smooth", block:"start" });
 }
 
 /* ---------------- conferir antes de mandar ---------------- */
@@ -578,7 +581,6 @@ function mostrarFeito(codigo, sinal, link, falhou){
 async function iniciar(){
   $("rodEnd").textContent = window.JB.endereco;
   await carregarCardapio();
-  desenharCasa();
 
   const d0 = primeiraDataPossivel();
   if($("retiradaTx")) $("retiradaTx").textContent = "No ateliê, na " + window.JB.endereco + ", de segunda a sábado das "
@@ -599,11 +601,9 @@ async function iniciar(){
     montarHoras();
   });
 
-  $("modoRecheio").onclick = () => { S.modo = "recheio"; atualizar(); };
-  $("modoCombinacao").onclick = () => { S.modo = "combinacao"; atualizar(); };
   $("outro").addEventListener("input", pintarResumo);
   $("monta").addEventListener("submit", enviar);
-  $("barraIr").onclick = () => $("resumo").scrollIntoView({ behavior:"smooth", block:"start" });
+  $("barraIr").onclick = () => $(conta() ? "resumo" : proximaEtapa()).scrollIntoView({ behavior:"smooth", block:"start" });
   $("outroPedido").onclick = () => location.reload();
 
   if("IntersectionObserver" in window){
@@ -617,8 +617,27 @@ async function iniciar(){
   window.__PRONTO = true;
 }
 let RESUMO_VISIVEL = false;
+/* A barra aparece desde o começo: "a partir de" até ter tamanho e modelo, depois o total. */
+function aPartirDe(){
+  const mods = grupo("modelo");
+  const tams = S.tamanho ? [S.tamanho] : grupo("tamanho").map(t => t.id);
+  const lista = (S.modelo ? [achar(S.modelo)] : mods).filter(Boolean);
+  let min = Infinity;
+  lista.forEach(m => tams.forEach(t => { const v = preco(m, t); if(v && v < min) min = v; }));
+  return isFinite(min) ? min : 0;
+}
+function proximaEtapa(){
+  if(!S.tamanho) return "etTamanho";
+  if(!S.modelo) return "etModelo";
+  return "resumo";
+}
 function pintarBarra(){
   const c = conta();
-  $("barra").classList.toggle("hide", !c || RESUMO_VISIVEL || !$("feito").classList.contains("hide"));
+  const feito = !$("feito").classList.contains("hide");
+  const inicio = !c && aPartirDe() > 0;
+  $("barra").classList.toggle("hide", feito || RESUMO_VISIVEL || (!c && !inicio));
+  $("barraK").textContent = c ? "Total" : "A partir de";
+  $("barraTotal").textContent = reais(c ? c.total : aPartirDe());
+  $("barraIr").textContent = c ? "Revisar pedido" : "Começar";
 }
 iniciar();
