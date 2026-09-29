@@ -10,12 +10,28 @@
 <meta property="og:description" content="Aqui tem amor, carinho e muito sabor. Delivery, bolos por encomenda e retirada na Vila Madalena.">
 <meta property="og:image" content="https://jballassa.github.io/assets/og.jpg">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://jballassa.github.io/">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://jballassa.github.io/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Bakery","name":"Jessica Ballassa Confeitaria","alternateName":"JB Confeitaria",
+ "url":"https://jballassa.github.io/","image":"https://jballassa.github.io/assets/og.jpg","logo":"https://jballassa.github.io/assets/selo-jb-512.png",
+ "telephone":"+5511917703998","priceRange":"$$","servesCuisine":"Confeitaria artesanal","currenciesAccepted":"BRL","paymentAccepted":"Pix, cartão",
+ "address":{"@type":"PostalAddress","streetAddress":"Rua Wisard, 598","addressLocality":"São Paulo","addressRegion":"SP","postalCode":"05434-080","addressCountry":"BR"},
+ "areaServed":"Vila Madalena, São Paulo",
+ "sameAs":["https://www.instagram.com/jballassaconfeitaria/"],
+ "openingHoursSpecification":[
+  {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"11:00","closes":"22:45"},
+  {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"14:00","closes":"21:45"}],
+ "hasMenu":"https://jbconfeitaria.saipos.com/","potentialAction":{"@type":"OrderAction","target":"https://jbconfeitaria.saipos.com/"}}
+</script>
 <link rel="icon" href="assets/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/selo-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="css/jb.css?v=32">
+<link rel="stylesheet" href="css/jb.css?v=35">
 </head>
 <body>
 
@@ -62,7 +78,7 @@
         <p class="status" id="status"><span class="luz"></span><span id="statusTx">Vila Madalena, São Paulo</span></p>
       </div>
       <figure class="arco surge">
-        <img src="assets/fotos/cookie-nutella.jpg" alt="Cookie recheado de Nutella sendo aberto com as mãos" width="1000" height="1250" fetchpriority="high">
+        <picture><source type="image/webp" srcset="assets/fotos/cookie-nutella-480.webp 480w, assets/fotos/cookie-nutella-800.webp 800w, assets/fotos/cookie-nutella.webp 1000w" sizes="(min-width:960px) 45vw, 92vw"><img src="assets/fotos/cookie-nutella.jpg" alt="Cookie recheado de Nutella sendo aberto com as mãos" width="1000" height="1250" fetchpriority="high" srcset="assets/fotos/cookie-nutella-480.jpg 480w, assets/fotos/cookie-nutella-800.jpg 800w, assets/fotos/cookie-nutella.jpg 1000w" sizes="(min-width:960px) 45vw, 92vw"></picture>
         <figcaption>Cookie Nutella, feito no ateliê</figcaption>
       </figure>
     </div>
@@ -94,7 +110,7 @@
       <div class="surge">
         <p class="eyebrow">Delivery da casa</p>
         <h2 class="h2">Peça direto <em>do ateliê</em></h2>
-        <p class="texto">Compre direto com a gente e tenha preços exclusivos. Entrega na nossa região ou retirada no balcão.</p>
+        <p class="texto">Compre direto com a gente e tenha preços exclusivos. Entrega na nossa região ou retirada no ateliê.</p>
         <div class="cupons" id="cupons"></div>
         <div class="botoes" style="justify-content:center">
           <a class="bt" id="btnDelivery2" href="#" rel="noopener">Fazer meu pedido</a>
@@ -103,10 +119,10 @@
       </div>
     </div>
     <div class="mosaico" id="queridinhos" aria-label="Os queridinhos">
-      <figure class="peca"><img src="assets/fotos/brownie-ninho-nutella.jpg" alt="Brownie Ninho e Nutella empilhado" loading="lazy" width="1000" height="1250"><figcaption><small>Brownies</small><b>Ninho e Nutella</b></figcaption></figure>
-      <figure class="peca"><img src="assets/fotos/bolo-gelado-supreme.jpg" alt="Fatia do Bolo Gelado Supreme" loading="lazy" width="800" height="1000"><figcaption><small>Bolo gelado</small><b>Supreme</b></figcaption></figure>
-      <figure class="peca"><img src="assets/fotos/mega-brigadeiro.jpg" alt="Dois mega brigadeiros com granulado" loading="lazy" width="800" height="1000"><figcaption><small>Docinhos</small><b>Mega Brigadeiro</b></figcaption></figure>
-      <figure class="peca"><img src="assets/fotos/brownie-brigadeiro.jpg" alt="Brownie recheado com brigadeiro" loading="lazy" width="800" height="1000"><figcaption><small>Brownies</small><b>Brigadeiro</b></figcaption></figure>
+      <figure class="peca"><picture><source type="image/webp" srcset="assets/fotos/brownie-ninho-nutella-480.webp 480w, assets/fotos/brownie-ninho-nutella-800.webp 800w, assets/fotos/brownie-ninho-nutella.webp 1000w" sizes="(min-width:960px) 25vw, 50vw"><img src="assets/fotos/brownie-ninho-nutella.jpg" alt="Brownie Ninho e Nutella empilhado" loading="lazy" width="1000" height="1250" srcset="assets/fotos/brownie-ninho-nutella-480.jpg 480w, assets/fotos/brownie-ninho-nutella-800.jpg 800w, assets/fotos/brownie-ninho-nutella.jpg 1000w" sizes="(min-width:960px) 25vw, 50vw"></picture><figcaption><small>Brownies</small><b>Ninho e Nutella</b></figcaption></figure>
+      <figure class="peca"><picture><source type="image/webp" srcset="assets/fotos/bolo-gelado-supreme-480.webp 480w, assets/fotos/bolo-gelado-supreme.webp 800w" sizes="(min-width:960px) 25vw, 50vw"><img src="assets/fotos/bolo-gelado-supreme.jpg" alt="Fatia do Bolo Gelado Supreme" loading="lazy" width="800" height="1000" srcset="assets/fotos/bolo-gelado-supreme-480.jpg 480w, assets/fotos/bolo-gelado-supreme.jpg 800w" sizes="(min-width:960px) 25vw, 50vw"></picture><figcaption><small>Bolo gelado</small><b>Supreme</b></figcaption></figure>
+      <figure class="peca"><picture><source type="image/webp" srcset="assets/fotos/mega-brigadeiro-480.webp 480w, assets/fotos/mega-brigadeiro.webp 800w" sizes="(min-width:960px) 25vw, 50vw"><img src="assets/fotos/mega-brigadeiro.jpg" alt="Dois mega brigadeiros com granulado" loading="lazy" width="800" height="1000" srcset="assets/fotos/mega-brigadeiro-480.jpg 480w, assets/fotos/mega-brigadeiro.jpg 800w" sizes="(min-width:960px) 25vw, 50vw"></picture><figcaption><small>Docinhos</small><b>Mega Brigadeiro</b></figcaption></figure>
+      <figure class="peca"><picture><source type="image/webp" srcset="assets/fotos/brownie-brigadeiro-480.webp 480w, assets/fotos/brownie-brigadeiro.webp 800w" sizes="(min-width:960px) 25vw, 50vw"><img src="assets/fotos/brownie-brigadeiro.jpg" alt="Brownie recheado com brigadeiro" loading="lazy" width="800" height="1000" srcset="assets/fotos/brownie-brigadeiro-480.jpg 480w, assets/fotos/brownie-brigadeiro.jpg 800w" sizes="(min-width:960px) 25vw, 50vw"></picture><figcaption><small>Brownies</small><b>Brigadeiro</b></figcaption></figure>
     </div>
   </section>
 
@@ -147,7 +163,7 @@
     <div class="painel claro">
       <div class="surge">
         <p class="eyebrow">O ateliê</p>
-        <h2 class="h2">Vila Madalena, <em>todos os dias</em></h2>
+        <h2 class="h2">Vila Madalena, <em>de segunda a domingo</em></h2>
         <p class="endereco" id="endTx">Rua Wisard, 598, Vila Madalena</p>
         <dl class="horarios" id="horarios"></dl>
         <div class="contatos">
@@ -157,7 +173,7 @@
         <p class="miudo"><a id="lnkInsta" href="#" rel="noopener">@jballassaconfeitaria</a> no Instagram</p>
       </div>
     </div>
-    <figure class="foto-cheia"><img src="assets/fotos/atelie-bolos-de-pote.jpg" alt="Bolos de pote com a etiqueta da JB no ateliê" loading="lazy" width="900" height="1125"></figure>
+    <figure class="foto-cheia"><picture><source type="image/webp" srcset="assets/fotos/atelie-bolos-de-pote-480.webp 480w, assets/fotos/atelie-bolos-de-pote-800.webp 800w, assets/fotos/atelie-bolos-de-pote.webp 900w" sizes="(min-width:960px) 50vw, 100vw"><img src="assets/fotos/atelie-bolos-de-pote.jpg" alt="Bolos de pote com a etiqueta da JB no ateliê" loading="lazy" width="900" height="1125" srcset="assets/fotos/atelie-bolos-de-pote-480.jpg 480w, assets/fotos/atelie-bolos-de-pote-800.jpg 800w, assets/fotos/atelie-bolos-de-pote.jpg 900w" sizes="(min-width:960px) 50vw, 100vw"></picture></figure>
   </section>
 
   <!-- ============ PERGUNTAS ============ -->
@@ -183,6 +199,14 @@
         <details>
           <summary>Onde vocês entregam os doces do dia a dia?</summary>
           <p>Pelo nosso delivery próprio. Ao colocar o seu endereço, o site mostra na hora se ele está na área de entrega e quanto custa o frete.</p>
+        </details>
+        <details>
+          <summary>Qual é o horário do delivery?</summary>
+          <p id="faqDelivery"></p>
+        </details>
+        <details>
+          <summary>Os doces têm glúten, leite ou castanhas?</summary>
+          <p>Sim. Nossas massas levam farinha de trigo e ovos, e os recheios levam leite e derivados. Os doces com Nutella ou Kinder contêm avelã. Se você tem alergia ou precisa de uma versão sem lactose ou sem glúten, fale com a gente no WhatsApp antes de pedir.</p>
         </details>
         <details>
           <summary>Posso pedir uma decoração que não está na lista?</summary>
@@ -224,14 +248,14 @@
       <a href="#atelie">O ateliê</a>
       <a href="#" id="rodInsta" rel="noopener">Instagram</a>
     </nav>
-    <div class="fim"><span id="rodEnd">Rua Wisard, 598 · Vila Madalena, São Paulo</span><span>© 2026 Jessica Ballassa Confeitaria</span></div>
+    <div class="fim"><span id="rodEnd">Rua Wisard, 598 · Vila Madalena, São Paulo</span><span>© 2026 Jessica Ballassa Confeitaria · CNPJ <span id="rodCnpj"></span></span><span><a href="privacidade.html">Privacidade</a></span></div>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/config.js?v=32"></script>
-<script src="js/comum.js?v=32"></script>
+<script src="js/config.js?v=35"></script>
+<script src="js/comum.js?v=35"></script>
 <script>
 (function(){
   const J = window.JB;
@@ -252,7 +276,7 @@
     b.querySelector("b").textContent = c.codigo;
     b.querySelector("span").textContent = (c.texto + ", " + c.regra).replace(/R\$ /g, "R$ ");
     b.setAttribute("aria-label", "Copiar cupom " + c.codigo + ": " + c.texto + ", " + c.regra);
-    b.onclick = () => copiar(c.codigo, "Cupom " + c.codigo + " copiado. É só colar no pedido.");
+    b.onclick = () => { marcar("cupom", c.codigo); copiar(c.codigo, "Cupom " + c.codigo + " copiado. É só colar no pedido."); };
     cx.appendChild(b);
   });
 
@@ -273,6 +297,17 @@
   if(J.notasData) $("notasTx").textContent = "Avaliação dos clientes em cada aplicativo, " + J.notasData + ".";
   montarHorarios($("horarios"));
   pintarStatus($("status"), $("statusTx"));
+  if($("rodCnpj")) $("rodCnpj").textContent = J.cnpj || "";
+  if($("faqDelivery")){
+    const dl = document.createElement("dl"); montarHorarios.call(null, dl, J.delivery_horario);
+    const partes = [...dl.querySelectorAll("dt")].map((dt, i) => dt.textContent + " " + dl.querySelectorAll("dd")[i].textContent).filter(t => !/fechado/.test(t));
+    $("faqDelivery").textContent = "O delivery próprio funciona " + partes.join(", ").replace(/, ([^,]*)$/, " e $1").toLowerCase()
+      + ". Segunda e domingo não temos delivery, mas o ateliê fica aberto para retirada. Fora do horário, o site do delivery aceita agendamento e o pedido mínimo é de " + reais(J.delivery_minimo).replace(",00", "") + ".";
+  }
+  medirCliques({ btnDelivery:"pedir_delivery", btnDelivery2:"pedir_delivery", topoPedir:"pedir_delivery", lnkCardapio:"ver_cardapio",
+    lnkWhats:"whatsapp", btnWhatsFinal:"whatsapp", menuWhats:"whatsapp", navWhats:"whatsapp", lnkMapa:"como_chegar", lnkInsta:"instagram", rodInsta:"instagram" });
+  document.querySelectorAll('a[href="bolos.html"]').forEach(a => a.addEventListener("click", () => marcar("ir_encomendar", a.textContent.trim().slice(0, 30))));
+  document.querySelectorAll("#apps a").forEach(a => a.addEventListener("click", () => marcar("app", a.querySelector("b").textContent)));
   ligarMenu();
   ligarSurge();
 })();

@@ -81,9 +81,44 @@ const S = {
   tamanho:null, modelo:null, massa:null,
   modo:"recheio", recheio:null, combinacao:null, escolha:null,
   adicionais:new Set(), decoracao:null, acabamento:false,
-  forma:"retirada"
+  forma:"retirada", cor:null
 };
 let ENVIANDO = false;
+let CARDAPIO_DA_RESERVA = false;
+
+/* Amostras de cor do chantininho. "Outra" abre o campo de texto. */
+const CORES = [
+  { id:"branco",     nome:"Branco",      hex:"#FFFFFF" },
+  { id:"marfim",     nome:"Marfim",      hex:"#F6EEDC" },
+  { id:"rosa-bebe",  nome:"Rosa bebê",   hex:"#F6CFD4" },
+  { id:"pessego",    nome:"Pêssego",     hex:"#F7D2B8" },
+  { id:"lilas",      nome:"Lilás",       hex:"#D9C8EA" },
+  { id:"azul-bebe",  nome:"Azul bebê",   hex:"#C9DDEF" },
+  { id:"verde-menta",nome:"Verde menta", hex:"#CFE6D6" },
+  { id:"amarelo",    nome:"Amarelo manteiga", hex:"#F7E7B3" },
+  { id:"outra",      nome:"Outra cor",   hex:null }
+];
+function corEscolhida(){
+  if(!S.cor) return "";
+  if(S.cor === "outra") return $("cor").value.trim();
+  return (CORES.find(c => c.id === S.cor) || {}).nome || "";
+}
+function desenharCores(){
+  const cx = $("cores"); if(!cx) return;
+  cx.innerHTML = "";
+  CORES.forEach(c => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "cor" + (S.cor === c.id ? " on" : "") + (c.hex ? "" : " outra");
+    b.setAttribute("aria-pressed", String(S.cor === c.id));
+    b.setAttribute("aria-label", c.nome);
+    const am = document.createElement("i"); if(c.hex) am.style.background = c.hex; else am.textContent = "+";
+    const n = document.createElement("span"); n.textContent = c.nome;
+    b.append(am, n);
+    b.onclick = () => { S.cor = c.id; atualizar(); if(c.id === "outra") setTimeout(() => $("cor").focus(), 50); };
+    cx.appendChild(b);
+  });
+  $("lbCor").classList.toggle("hide", S.cor !== "outra");
+}
 
 const grupo = g => OPC.filter(o => o.grupo === g).sort((a, b) => (a.ordem || 0) - (b.ordem || 0));
 const achar = id => OPC.find(o => o.id === id) || null;
@@ -105,6 +140,7 @@ async function carregarCardapio(){
     OPC = d.map(o => ({ ...o, detalhe: o.detalhe || null }));
   } catch(e){
     OPC = CARDAPIO_RESERVA;
+    CARDAPIO_DA_RESERVA = true;
   }
 }
 
@@ -379,7 +415,9 @@ function atualizar(){
   desenharLista("opRecheio", "recheio", "recheio", "recheio");
   desenharAdicionais();
   if(chant) desenharDecoracao();
+  if(chant) desenharCores();
   desenharForma();
+  if($("avisoReserva")) $("avisoReserva").classList.toggle("hide", !CARDAPIO_DA_RESERVA);
 
   $("etDecoracao").classList.toggle("hide", !chant);
   $("nRetirada").textContent = chant ? "07" : "06";
@@ -474,7 +512,7 @@ function mensagem(c, codigo){
   L.push("");
   L.push("*O bolo*");
   c.linhas.forEach(l => L.push(l.nome + (l.valor ? ": " + reais(l.valor) : "")));
-  if(S.modelo === "mod_chant" && $("cor").value.trim()) L.push("Cor do chantininho: " + $("cor").value.trim());
+  if(S.modelo === "mod_chant" && corEscolhida()) L.push("Cor do chantininho: " + corEscolhida());
   if(S.decoracao === "dec_escrita" && $("escrita").value.trim()) L.push("Escrita: “" + $("escrita").value.trim() + "”");
   L.push("");
   L.push("*Total: " + reais(c.total) + "*");
@@ -515,7 +553,7 @@ async function enviar(ev){
     adicionais: [...S.adicionais],
     decoracao: chant ? S.decoracao : null,
     acabamento: chant && S.acabamento ? (grupo("acabamento")[0] || {}).id : null,
-    cor: chant ? $("cor").value.trim() : null,
+    cor: chant ? corEscolhida() : null,
     escrita: chant && S.decoracao === "dec_escrita" ? $("escrita").value.trim() : null,
     ocasiao: $("ocasiao").value.trim(),
     obs: [$("obs").value.trim(), chant && $("outro").value.trim() ? "Algo diferente: " + $("outro").value.trim() : ""].filter(Boolean).join(" | "),
@@ -524,6 +562,7 @@ async function enviar(ev){
   };
 
   ENVIANDO = true;
+  marcar("enviar_pedido", (S.modelo || "") + " " + (S.tamanho || "") + " " + Math.round(c.total));
   const bt = $("enviar"); bt.disabled = true; bt.textContent = "Registrando seu pedido...";
   let codigo = null, total = c.total, sinal = c.sinal, falhouRede = false;
   try {
@@ -580,6 +619,16 @@ function mostrarFeito(codigo, sinal, link, falhou){
 /* ---------------- ligar ---------------- */
 async function iniciar(){
   $("rodEnd").textContent = window.JB.endereco;
+  if($("rodCnpj")) $("rodCnpj").textContent = window.JB.cnpj || "";
+  medirCliques({ rodWhats:"whatsapp", navWhats:"whatsapp", menuWhats:"whatsapp", barraIr:"barra" });
+  document.querySelectorAll(".comecar").forEach(a => a.addEventListener("click", () => marcar("comecar_bolo")));
+  /* os chips de ocasião já preenchem o campo do passo final e levam ao montador */
+  document.querySelectorAll(".ocasioes button").forEach(b => b.addEventListener("click", () => {
+    $("ocasiao").value = b.textContent.trim().toLowerCase();
+    document.querySelectorAll(".ocasioes button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    marcar("comecar_bolo", b.textContent.trim());
+    $("monta").scrollIntoView({ behavior:"smooth", block:"start" });
+  }));
   await carregarCardapio();
 
   const d0 = primeiraDataPossivel();

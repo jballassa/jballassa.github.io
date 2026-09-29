@@ -58,8 +58,8 @@ async function copiar(texto, recado){
 }
 
 /* Junta os dias com o mesmo horário: "Segunda a sábado 11h às 22h45". */
-function montarHorarios(dl){
-  const H = window.JB.horario;
+function montarHorarios(dl, horario){
+  const H = horario || window.JB.horario;
   const ordem = [1,2,3,4,5,6,0];
   const grupos = [];
   ordem.forEach(d => {
@@ -80,24 +80,44 @@ function montarHorarios(dl){
   });
 }
 
+/* O status do herói fala do DELIVERY, porque o botão ao lado leva ao delivery.
+   Usa delivery_horario (o que o Saipos aceita), não o horário do ateliê. */
 function pintarStatus(caixa, tx){
   const a = agoraSP();
-  const h = window.JB.horario[a.dia];
+  const H = window.JB.delivery_horario || window.JB.horario;
+  const h = H[a.dia];
   if(h && a.min >= h[0] && a.min < h[1]){
     caixa.classList.add("aberto");
-    tx.textContent = "Aberto agora · até " + horaCurta(h[1]);
+    tx.textContent = "Delivery aberto · até " + horaCurta(h[1]);
     return;
   }
-  /* fechado: diz quando abre */
   for(let i = 0; i < 8; i++){
     const d = (a.dia + i) % 7;
-    const hh = window.JB.horario[d];
+    const hh = H[d];
     if(!hh) continue;
     if(i === 0 && a.min >= hh[0]) continue;
     const quando = i === 0 ? "hoje" : i === 1 ? "amanhã" : DIAS[d].toLowerCase();
-    tx.textContent = "Fechado agora · abre " + quando + " às " + horaCurta(hh[0]);
+    tx.textContent = "Delivery fechado · abre " + quando + " às " + horaCurta(hh[0])
+      + (window.JB.delivery_agenda ? " · dá para agendar" : "");
     return;
   }
+}
+
+/* Medição leve e anônima: qual botão foi tocado. Nada de cookie, nada de nome.
+   Grava em jb_evento_site pelo REST do Supabase; se falhar, ninguém percebe. */
+function marcar(evento, detalhe){
+  try {
+    const J = window.JB.supabase;
+    if(!J || !navigator.onLine) return;
+    const corpo = JSON.stringify({ pagina: location.pathname.replace(/^\//, "") || "index.html", evento: String(evento).slice(0, 40),
+      detalhe: detalhe == null ? null : String(detalhe).slice(0, 80), largura: Math.min(innerWidth, 9999) });
+    fetch(J.url + "/rest/v1/jb_evento_site", { method: "POST", keepalive: true,
+      headers: { "Content-Type": "application/json", apikey: J.chave, Authorization: "Bearer " + J.chave, Prefer: "return=minimal" },
+      body: corpo }).catch(() => {});
+  } catch(e){}
+}
+function medirCliques(mapa){
+  Object.entries(mapa).forEach(([id, ev]) => { const el = $(id); if(el) el.addEventListener("click", () => marcar(ev, id)); });
 }
 
 /* o menu de três linhas, como no site da clínica */

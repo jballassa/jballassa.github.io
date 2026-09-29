@@ -9,13 +9,18 @@
 <meta property="og:title" content="Bolos por encomenda · Jessica Ballassa Confeitaria">
 <meta property="og:description" content="Monte o seu bolo e veja o valor na hora. Encomendas com 48 horas de antecedência.">
 <meta property="og:image" content="https://jballassa.github.io/assets/og.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jballassa.github.io/bolos.html">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://jballassa.github.io/bolos.html">
 <link rel="icon" href="assets/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/selo-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="css/jb.css?v=33">
-<link rel="stylesheet" href="css/bolos.css?v=33">
+<link rel="stylesheet" href="css/jb.css?v=35">
+<link rel="stylesheet" href="css/bolos.css?v=35">
 </head>
 <body>
 
@@ -57,13 +62,14 @@
         <p class="lead">Feito à mão, camada por camada. Escolha o tamanho, o modelo, a massa e o recheio, e veja o valor na hora.</p>
         <a class="bt cheio comecar" href="#monta">Começar meu bolo</a>
         <p class="status aberto"><span class="luz"></span><span id="proxData">Mínimo de 48 horas de antecedência</span></p>
+        <p class="ocasioes" aria-label="Para que ocasião?"><button type="button">Aniversário</button><button type="button">Chá de bebê</button><button type="button">Casamento</button><button type="button">Presente</button><button type="button">Empresa</button></p>
       </div>
       <div class="cartao-menu passos surge" aria-label="Como funciona">
         <p class="sub">Como funciona</p>
         <ol>
           <li><i>I</i><div><b>Monte o seu bolo aqui</b><span>O valor aparece enquanto você escolhe.</span></div></li>
           <li><i>II</i><div><b>Envie pelo WhatsApp</b><span>O pedido chega pronto para a Jessica.</span></div></li>
-          <li><i>III</i><div><b>50% no Pix reserva a data</b><span>O restante é pago na retirada.</span></div></li>
+          <li><i>III</i><div><b>A Jessica confirma com você</b><span>Ela responde, manda a chave Pix do sinal e reserva a data.</span></div></li>
         </ol>
       </div>
     </div>
@@ -119,8 +125,10 @@
           <fieldset class="etapa hide" id="etDecoracao">
             <legend><span class="n">06</span>Decoração do chantininho</legend>
             <p class="nota">O chantininho já vem espatulado liso em uma cor. Se quiser mais, escolha abaixo.</p>
-            <label class="campo">Cor do chantininho
-              <input type="text" id="cor" maxlength="40" placeholder="ex.: rosa bebê, branco, lilás">
+            <p class="mini" style="margin-top:0">Cor do chantininho</p>
+            <div class="cores" id="cores" role="group" aria-label="Cor do chantininho"></div>
+            <label class="campo hide" id="lbCor">Qual cor?
+              <input type="text" id="cor" maxlength="40" placeholder="ex.: azul bebê, verde menta, marfim">
             </label>
             <div class="opcoes" id="opDecoracao"></div>
             <label class="campo hide" id="lbEscrita">O que vai escrito
@@ -176,7 +184,9 @@
             <p class="aviso hide" id="avisoOrc">Como você pediu algo fora da lista, a Jessica confirma o valor final no WhatsApp.</p>
             <p class="erro hide" id="erro" role="alert"></p>
             <button type="submit" class="bt cheio" id="enviar">Enviar pedido pelo WhatsApp</button>
+            <p class="aviso hide" id="avisoReserva">Estamos sem conexão com o nosso cardápio agora. Os valores são os da última atualização e a Jessica confirma no WhatsApp.</p>
             <p class="letra">A data só fica reservada depois que a Jessica confirmar e o sinal de 50% cair no Pix. O restante é pago na retirada.</p>
+            <p class="letra privacidade">Usamos seu nome e WhatsApp só para este pedido. Nada de propaganda. <a href="privacidade.html">Como cuidamos dos seus dados</a></p>
           </section>
         </aside>
       </div>
@@ -202,6 +212,10 @@
         <details>
           <summary>Como funciona o pagamento?</summary>
           <p>Depois que a Jessica confirma o pedido pelo WhatsApp, um sinal de 50% no Pix reserva a sua data. O restante é pago na retirada.</p>
+        </details>
+        <details>
+          <summary>Os bolos têm glúten, leite ou castanhas?</summary>
+          <p>Sim. As massas levam farinha de trigo e ovos, e os recheios levam leite e derivados. Kinder Bueno e Nutella contêm avelã. Se alguém da festa tem alergia, escreva nas observações ou fale com a gente no WhatsApp antes de pedir.</p>
         </details>
         <details>
           <summary>Posso pedir uma decoração diferente?</summary>
@@ -238,7 +252,7 @@
       <a href="index.html#atelie">O ateliê</a>
       <a href="#" id="rodWhats" rel="noopener">WhatsApp</a>
     </nav>
-    <div class="fim"><span id="rodEnd"></span><span>© 2026 Jessica Ballassa Confeitaria</span></div>
+    <div class="fim"><span id="rodEnd"></span><span>© 2026 Jessica Ballassa Confeitaria · CNPJ <span id="rodCnpj"></span></span><span><a href="privacidade.html">Privacidade</a></span></div>
   </div>
 </footer>
 
@@ -250,9 +264,9 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/config.js?v=33"></script>
-<script src="js/comum.js?v=33"></script>
-<script src="js/bolos.js?v=33"></script>
+<script src="js/config.js?v=35"></script>
+<script src="js/comum.js?v=35"></script>
+<script src="js/bolos.js?v=35"></script>
 <script>
 (function(){
   const wa = linkWhats("Oi, Jessica! Queria falar sobre um bolo por encomenda :)");

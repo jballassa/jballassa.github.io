@@ -27,7 +27,23 @@ window.JB = {
   bairro: "Vila Madalena, São Paulo",
   mapa: "https://www.google.com/maps/search/?api=1&query=Rua+Wisard+598+Vila+Madalena+S%C3%A3o+Paulo",
 
-  /* Horário da loja. 0 = domingo. [abre, fecha] em minutos do dia. */
+  /* Empresa, para o rodapé (obrigatório em site que recebe pedido). */
+  cnpj: "47.010.705/0001-53",
+
+  /* Horário do DELIVERY próprio (o que o Saipos aceita hoje, lido em 29/09/2026).
+     Terça das 11h às 20h, quarta a sábado das 11h às 21h. Sem segunda e domingo.
+     Fora do horário o Saipos aceita agendamento para os próximos 2 dias. */
+  delivery_horario: {
+    2: [11 * 60, 20 * 60],
+    3: [11 * 60, 21 * 60],
+    4: [11 * 60, 21 * 60],
+    5: [11 * 60, 21 * 60],
+    6: [11 * 60, 21 * 60]
+  },
+  delivery_agenda: true,
+  delivery_minimo: 25,
+
+  /* Horário do ateliê (retirada e balcão). 0 = domingo. [abre, fecha] em minutos do dia. */
   horario: {
     0: [14 * 60, 21 * 60 + 45],
     1: [11 * 60, 22 * 60 + 45],
