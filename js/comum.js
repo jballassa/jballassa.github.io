@@ -81,7 +81,7 @@ function montarHorarios(dl, horario){
 }
 
 /* O status do herói fala do DELIVERY, porque o botão ao lado leva ao delivery.
-   Usa delivery_horario (o que o Saipos aceita), não o horário do ateliê. */
+   Usa delivery_horario (hoje igual ao do ateliê; fica separado caso um dia mude). */
 function pintarStatus(caixa, tx){
   const a = agoraSP();
   const H = window.JB.delivery_horario || window.JB.horario;

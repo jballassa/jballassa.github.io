@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="css/jb.css?v=35">
+<link rel="stylesheet" href="css/jb.css?v=36">
 </head>
 <body>
 
@@ -254,8 +254,8 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/config.js?v=35"></script>
-<script src="js/comum.js?v=35"></script>
+<script src="js/config.js?v=36"></script>
+<script src="js/comum.js?v=36"></script>
 <script>
 (function(){
   const J = window.JB;
@@ -300,9 +300,10 @@
   if($("rodCnpj")) $("rodCnpj").textContent = J.cnpj || "";
   if($("faqDelivery")){
     const dl = document.createElement("dl"); montarHorarios.call(null, dl, J.delivery_horario);
-    const partes = [...dl.querySelectorAll("dt")].map((dt, i) => dt.textContent + " " + dl.querySelectorAll("dd")[i].textContent).filter(t => !/fechado/.test(t));
-    $("faqDelivery").textContent = "O delivery próprio funciona " + partes.join(", ").replace(/, ([^,]*)$/, " e $1").toLowerCase()
-      + ". Segunda e domingo não temos delivery, mas o ateliê fica aberto para retirada. Fora do horário, o site do delivery aceita agendamento e o pedido mínimo é de " + reais(J.delivery_minimo).replace(",00", "") + ".";
+    const partes = [...dl.querySelectorAll("dt")].map((dt, i) => (dt.textContent + ", das " + dl.querySelectorAll("dd")[i].textContent).toLowerCase()).filter(t => !/fechado/.test(t));
+    const lista = partes.length > 1 ? partes.slice(0, -1).join("; ") + ", e " + partes[partes.length - 1] : partes[0];
+    $("faqDelivery").textContent = "O delivery próprio funciona de " + lista
+      + ". É o mesmo horário do ateliê. Fora do horário, o site do delivery aceita agendamento e o pedido mínimo é de " + reais(J.delivery_minimo).replace(",00", "") + ".";
   }
   medirCliques({ btnDelivery:"pedir_delivery", btnDelivery2:"pedir_delivery", topoPedir:"pedir_delivery", lnkCardapio:"ver_cardapio",
     lnkWhats:"whatsapp", btnWhatsFinal:"whatsapp", menuWhats:"whatsapp", navWhats:"whatsapp", lnkMapa:"como_chegar", lnkInsta:"instagram", rodInsta:"instagram" });

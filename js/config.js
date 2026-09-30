@@ -30,15 +30,17 @@ window.JB = {
   /* Empresa, para o rodapé (obrigatório em site que recebe pedido). */
   cnpj: "47.010.705/0001-53",
 
-  /* Horário do DELIVERY próprio (o que o Saipos aceita hoje, lido em 29/09/2026).
-     Terça das 11h às 20h, quarta a sábado das 11h às 21h. Sem segunda e domingo.
+  /* Horário do DELIVERY próprio, confirmado pelo Henrique em 29/09/2026:
+     segunda a sábado das 11h às 22h45, domingo das 14h às 21h45 (igual ao do ateliê).
      Fora do horário o Saipos aceita agendamento para os próximos 2 dias. */
   delivery_horario: {
-    2: [11 * 60, 20 * 60],
-    3: [11 * 60, 21 * 60],
-    4: [11 * 60, 21 * 60],
-    5: [11 * 60, 21 * 60],
-    6: [11 * 60, 21 * 60]
+    0: [14 * 60, 21 * 60 + 45],
+    1: [11 * 60, 22 * 60 + 45],
+    2: [11 * 60, 22 * 60 + 45],
+    3: [11 * 60, 22 * 60 + 45],
+    4: [11 * 60, 22 * 60 + 45],
+    5: [11 * 60, 22 * 60 + 45],
+    6: [11 * 60, 22 * 60 + 45]
   },
   delivery_agenda: true,
   delivery_minimo: 25,
