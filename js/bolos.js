@@ -8,8 +8,8 @@ const CARDAPIO_RESERVA = [
   { id:"tam_p",  grupo:"tamanho", nome:"P",  descricao:"15cm", ordem:20, detalhe:{cm:15,fatias:15,kg:1.8} },
   { id:"tam_m",  grupo:"tamanho", nome:"M",  descricao:"17cm", ordem:30, detalhe:{cm:17,fatias:20,kg:2.2} },
   { id:"tam_g",  grupo:"tamanho", nome:"G",  descricao:"20cm", ordem:40, detalhe:{cm:20,fatias:25,kg:2.8} },
-  { id:"mod_naked", grupo:"modelo", nome:"Naked Cake", descricao:"Laterais aparentes, montado no acetato", ordem:10, preco_pp:170, preco_p:220, preco_m:290, preco_g:320 },
-  { id:"mod_chant", grupo:"modelo", nome:"Chantininho", descricao:"Espatulado liso em uma cor", ordem:20, preco_pp:200, preco_p:260, preco_m:320, preco_g:360 },
+  { id:"mod_naked", grupo:"modelo", nome:"Naked Cake", descricao:"Laterais aparentes, montado no acetato", ordem:10, preco_pp:170, preco_p:220, preco_m:290, preco_g:350 },
+  { id:"mod_chant", grupo:"modelo", nome:"Chantininho", descricao:"Espatulado liso em uma cor", ordem:20, preco_pp:200, preco_p:260, preco_m:320, preco_g:390 },
   { id:"mas_baunilha", grupo:"massa", nome:"Baunilha", ordem:10 },
   { id:"mas_choco", grupo:"massa", nome:"Chocolate", ordem:20 },
   { id:"mas_red", grupo:"massa", nome:"Red velvet", ordem:30, preco_pp:12, preco_p:16, preco_m:20, preco_g:24 },
@@ -24,11 +24,11 @@ const CARDAPIO_RESERVA = [
   { id:"cmb_brownie", grupo:"combinacao", nome:"Duo brownie", descricao:"Brigadeiro cremoso ou ninho trufado, com pedaços de brownie", ordem:30, preco_pp:18, preco_p:24, preco_m:30, preco_g:38, detalhe:{escolha:["Brigadeiro cremoso","Ninho trufado"]} },
   { id:"adc_morango", grupo:"adicional", nome:"Morangos frescos", ordem:10, preco_pp:18, preco_p:28, preco_m:36, preco_g:48 },
   { id:"adc_geleia", grupo:"adicional", nome:"Geleia de frutas vermelhas", ordem:20, preco_pp:28, preco_p:36, preco_m:44, preco_g:58 },
-  { id:"dec_classico", grupo:"decoracao", nome:"Espatulado clássico", descricao:"Sem detalhes de bico", ordem:10, preco_pp:25, preco_p:25, preco_m:35, preco_g:58, so_modelo:"mod_chant" },
+  { id:"dec_classico", grupo:"decoracao", nome:"Espatulado clássico", descricao:"Sem detalhes de bico", ordem:10, preco_pp:25, preco_p:25, preco_m:35, preco_g:45, so_modelo:"mod_chant" },
   { id:"dec_vintage", grupo:"decoracao", nome:"Vintage cake", descricao:"Com fitas de cetim", ordem:20, preco_pp:50, preco_p:60, preco_m:70, preco_g:88, so_modelo:"mod_chant" },
   { id:"dec_escrita", grupo:"decoracao", nome:"Espatulado com escrita", ordem:30, preco_pp:45, preco_p:55, preco_m:65, preco_g:70, so_modelo:"mod_chant" },
-  { id:"dec_bico", grupo:"decoracao", nome:"Espatulado com detalhes de bico", ordem:40, preco_pp:58, preco_p:58, preco_m:78, preco_g:78, so_modelo:"mod_chant" },
-  { id:"acb_brilho", grupo:"acabamento", nome:"Glitter, pérolas ou dragées", ordem:10, preco_pp:45, preco_p:45, preco_m:68, preco_g:68, so_modelo:"mod_chant" }
+  { id:"dec_bico", grupo:"decoracao", nome:"Espatulado com detalhes de bico", ordem:40, preco_pp:58, preco_p:68, preco_m:78, preco_g:88, so_modelo:"mod_chant" },
+  { id:"acb_brilho", grupo:"acabamento", nome:"Glitter, pérolas ou dragées", ordem:10, preco_pp:45, preco_p:55, preco_m:68, preco_g:78, so_modelo:"mod_chant" }
 ];
 
 /* Os sabores da casa são atalhos: cada um já escolhe o recheio certo.
