@@ -21,7 +21,7 @@ const CARDAPIO_RESERVA = [
   { id:"rec_kinder", grupo:"recheio", nome:"Kinder Bueno", ordem:50, premium:true, preco_pp:45, preco_p:55, preco_m:68, preco_g:78 },
   { id:"cmb_perfeito", grupo:"combinacao", nome:"Duo perfeito", descricao:"Brigadeiro meio amargo e ninho trufado", ordem:10, preco_pp:25, preco_p:35, preco_m:45, preco_g:50 },
   { id:"cmb_classico", grupo:"combinacao", nome:"Duo clássico", descricao:"Cocada cremosa e brigadeiro meio amargo", ordem:20, preco_pp:25, preco_p:35, preco_m:45, preco_g:55 },
-  { id:"cmb_brownie", grupo:"combinacao", nome:"Duo brownie", descricao:"Brigadeiro cremoso ou ninho trufado, com pedaços de brownie", ordem:30, preco_pp:18, preco_p:24, preco_m:30, preco_g:38, detalhe:{escolha:["Brigadeiro cremoso","Ninho trufado"]} },
+  { id:"cmb_brownie", grupo:"combinacao", nome:"Duo brownie", descricao:"Brigadeiro cremoso ou ninho trufado, com pedaços de brownie", ordem:30, preco_pp:25, preco_p:35, preco_m:45, preco_g:55, detalhe:{escolha:["Brigadeiro cremoso","Ninho trufado"]} },
   { id:"adc_morango", grupo:"adicional", nome:"Morangos frescos", ordem:10, preco_pp:18, preco_p:28, preco_m:36, preco_g:48 },
   { id:"adc_geleia", grupo:"adicional", nome:"Geleia de frutas vermelhas", ordem:20, preco_pp:28, preco_p:36, preco_m:44, preco_g:58 },
   { id:"dec_classico", grupo:"decoracao", nome:"Espatulado clássico", descricao:"Sem detalhes de bico", ordem:10, preco_pp:25, preco_p:25, preco_m:35, preco_g:45, so_modelo:"mod_chant" },
