@@ -31,10 +31,10 @@ window.JB = {
   cnpj: "47.010.705/0001-53",
 
   /* Horário do DELIVERY próprio, confirmado pelo Henrique em 29/09/2026:
-     segunda a sábado das 11h às 22h45, domingo das 14h às 21h45 (igual ao do ateliê).
+     segunda a sábado das 11h às 22h45, domingo das 15h às 22h45 desde 04/10/2026, antes 14h às 21h45 (igual ao do ateliê).
      Fora do horário o Saipos aceita agendamento para os próximos 2 dias. */
   delivery_horario: {
-    0: [14 * 60, 21 * 60 + 45],
+    0: [15 * 60, 22 * 60 + 45],
     1: [11 * 60, 22 * 60 + 45],
     2: [11 * 60, 22 * 60 + 45],
     3: [11 * 60, 22 * 60 + 45],
@@ -47,7 +47,7 @@ window.JB = {
 
   /* Horário do ateliê (retirada e balcão). 0 = domingo. [abre, fecha] em minutos do dia. */
   horario: {
-    0: [14 * 60, 21 * 60 + 45],
+    0: [15 * 60, 22 * 60 + 45],
     1: [11 * 60, 22 * 60 + 45],
     2: [11 * 60, 22 * 60 + 45],
     3: [11 * 60, 22 * 60 + 45],
@@ -58,7 +58,7 @@ window.JB = {
 
   /* Janela de retirada das encomendas, de meia em meia hora. */
   retirada: {
-    0: [14 * 60, 21 * 60],
+    0: [15 * 60, 22 * 60],
     1: [11 * 60, 22 * 60],
     2: [11 * 60, 22 * 60],
     3: [11 * 60, 22 * 60],
