@@ -17,9 +17,9 @@ window.JB = {
   ],
   notasData: "setembro de 2026",
 
-  /* Cupons do delivery próprio, criados no Saipos, válidos até 31/12/2026. */
+  /* Cupons do delivery próprio, conferidos no Saipos em 13/10/2026, válidos até 31/12/2026. O VOLTEI (panfleto da sacola) fica fora do site de propósito. */
   cupons: [
-    { codigo: "BEMVINDA",    texto: "10% no seu primeiro pedido", regra: "acima de R$ 35" },
+    { codigo: "BEMVINDO",    texto: "10% no seu primeiro pedido", regra: "acima de R$ 45" },
     { codigo: "FRETEGRATIS", texto: "entrega grátis",             regra: "acima de R$ 49,90" }
   ],
 
