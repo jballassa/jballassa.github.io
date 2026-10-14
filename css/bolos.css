@@ -215,3 +215,9 @@ body .toast{bottom:92px;}
 .cor:hover{border-color:var(--cacau-3);}
 .letra.privacidade{margin-top:10px;}
 .letra.privacidade a{color:var(--cacau-2);text-decoration:underline;text-underline-offset:2px;}
+
+/* identidade nova (out/2026): nomes das opções em Poppins, números das etapas sem itálico */
+.op .tx b,.sabor b,.passos b{font-family:var(--sans);font-weight:500;font-size:1.02rem;letter-spacing:0;}
+.etapa .n,.passos i{font-family:var(--serif);font-style:normal;font-weight:800;color:var(--coral-tx);}
+.etapa h3,.etapa .t{letter-spacing:-.02em;}
+.op .tx .valor-modelo{font-size:1.1rem;white-space:nowrap;letter-spacing:-.01em;}

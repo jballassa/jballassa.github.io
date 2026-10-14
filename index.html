@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Jessica Ballassa Confeitaria · Vila Madalena</title>
 <meta name="description" content="Confeitaria artesanal na Vila Madalena. Peça pelo nosso delivery, encomende seu bolo ou fale com a gente no WhatsApp.">
-<meta name="theme-color" content="#FFFBF8">
+<meta name="theme-color" content="#F8F0EA">
 <meta property="og:title" content="Jessica Ballassa Confeitaria">
 <meta property="og:description" content="Aqui tem amor, carinho e muito sabor. Delivery, bolos por encomenda e retirada na Vila Madalena.">
 <meta property="og:image" content="https://jballassa.github.io/assets/og.jpg">
@@ -30,8 +30,9 @@
 <link rel="apple-touch-icon" href="assets/selo-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="css/jb.css?v=42">
+<link rel="preload" href="assets/fonts/bricolage-jb-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="css/jb.css?v=43">
 </head>
 <body>
 
@@ -41,7 +42,7 @@
   <div class="wrap barra-topo">
     <button class="menu-bt" id="menuBt" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir o menu"><i></i></button>
     <a class="logo" href="#inicio" aria-label="Jessica Ballassa Confeitaria, início">
-      <img src="assets/selo-jb-256.png" alt="Jessica Ballassa Confeitaria" width="256" height="256">
+      <img src="assets/logo-jb.svg" alt="Jessica Ballassa Confeitaria" width="1467" height="1315">
     </a>
     <a class="pedir" id="topoPedir" href="#" rel="noopener">Pedir</a>
   </div>
@@ -69,7 +70,7 @@
     <div class="wrap grade">
       <div class="texto-heroi surge">
         <p class="eyebrow">Confeitaria artesanal · Vila Madalena</p>
-        <h1 class="display">Doces feitos à&nbsp;mão, <em>para adoçar os seus dias.</em></h1>
+        <h1 class="display">Doces feitos à&nbsp;mão, <em>para adoçar os seus dias<span class="pt">.</span></em></h1>
         <p class="lead">Bolos de pote, bolos gelados, brownies e bolos inteiros por encomenda. Da cozinha da Jessica direto para você.</p>
         <div class="botoes">
           <a class="bt" id="btnDelivery" href="#" rel="noopener">Pedir delivery</a>
@@ -98,7 +99,7 @@
   <section class="secao creme manifesto">
     <div class="wrap surge">
       <span class="ornamento" aria-hidden="true"></span>
-      <blockquote>Aqui tem amor, carinho e muito sabor.</blockquote>
+      <blockquote>Aqui tem amor, carinho e muito sabor<span class="pt">.</span></blockquote>
       <p class="texto">Receitas da Jessica, feitas à mão na nossa cozinha da Vila Madalena. Que possamos sempre adoçar os seus dias.</p>
       <p class="assina">Jessica Ballassa</p>
     </div>
@@ -109,7 +110,7 @@
     <div class="painel">
       <div class="surge">
         <p class="eyebrow">Delivery da casa</p>
-        <h2 class="h2">Peça direto <em>do ateliê</em></h2>
+        <h2 class="h2">Peça direto <em>do ateliê<span class="pt">.</span></em></h2>
         <p class="texto">Compre direto com a gente e tenha preços exclusivos. Entrega na nossa região ou retirada no ateliê.</p>
         <div class="cupons" id="cupons"></div>
         <div class="botoes" style="justify-content:center">
@@ -131,7 +132,7 @@
     <div class="painel pessego">
       <div class="surge">
         <p class="eyebrow">Bolos por encomenda</p>
-        <h2 class="h2">Um bolo inteiro, <em>do jeito que você imaginou</em></h2>
+        <h2 class="h2">Um bolo inteiro, <em>do jeito que você imaginou<span class="pt">.</span></em></h2>
         <p class="texto">Escolha o tamanho, a massa, o recheio e a decoração, e veja o valor na hora. A Jessica confirma tudo pelo WhatsApp.</p>
         <div class="botoes" style="justify-content:center">
           <a class="bt" href="bolos.html">Montar meu bolo</a>
@@ -141,7 +142,7 @@
     <div class="painel creme">
       <div class="cartao-menu surge">
         <p class="sub">Cardápio de bolos</p>
-        <h3>Tamanhos</h3>
+        <h3>Tamanhos<span class="pt">.</span></h3>
         <dl>
           <div class="ln"><dt>PP</dt><span class="pontilhado"></span><dd>13 cm · 10 fatias</dd></div>
           <div class="ln"><dt>P</dt><span class="pontilhado"></span><dd>15 cm · 15 fatias</dd></div>
@@ -163,7 +164,7 @@
     <div class="painel claro">
       <div class="surge">
         <p class="eyebrow">O ateliê</p>
-        <h2 class="h2">Vila Madalena, <em>de segunda a domingo</em></h2>
+        <h2 class="h2">Vila Madalena, <em>de segunda a domingo<span class="pt">.</span></em></h2>
         <p class="endereco" id="endTx">Rua Wisard, 598, Vila Madalena</p>
         <dl class="horarios" id="horarios"></dl>
         <div class="contatos">
@@ -181,7 +182,7 @@
     <div class="wrap">
       <div class="centro surge">
         <p class="eyebrow">Perguntas</p>
-        <h2 class="h2">Como <em>funciona</em></h2>
+        <h2 class="h2">Como <em>funciona<span class="pt">.</span></em></h2>
       </div>
       <div class="perguntas surge">
         <details>
@@ -240,8 +241,8 @@
 
 <footer class="rodape">
   <div class="wrap">
-    <img class="marca" src="assets/selo-jb-256.png" alt="Jessica Ballassa Confeitaria" width="256" height="256">
-    <p class="lema">Aqui tem amor, carinho e muito sabor.</p>
+    <img class="marca" src="assets/logo-jb-nome.svg" alt="Jessica Ballassa Confeitaria" width="1709" height="1552">
+    <p class="lema">aqui tem amor<span class="pt">.</span></p>
     <nav aria-label="Rodapé">
       <a href="#delivery">Delivery</a>
       <a href="bolos.html">Encomendas</a>
@@ -254,8 +255,8 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/config.js?v=42"></script>
-<script src="js/comum.js?v=42"></script>
+<script src="js/config.js?v=43"></script>
+<script src="js/comum.js?v=43"></script>
 <script>
 (function(){
   const J = window.JB;

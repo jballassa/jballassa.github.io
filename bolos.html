@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bolos por encomenda · Jessica Ballassa</title>
 <meta name="description" content="Monte o seu bolo: naked cake ou chantininho, massa, recheio e decoração, com o valor na hora. Encomendas com 48 horas de antecedência.">
-<meta name="theme-color" content="#FFFBF8">
+<meta name="theme-color" content="#F8F0EA">
 <meta property="og:title" content="Bolos por encomenda · Jessica Ballassa Confeitaria">
 <meta property="og:description" content="Monte o seu bolo e veja o valor na hora. Encomendas com 48 horas de antecedência.">
 <meta property="og:image" content="https://jballassa.github.io/assets/og.jpg">
@@ -18,9 +18,10 @@
 <link rel="apple-touch-icon" href="assets/selo-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="css/jb.css?v=42">
-<link rel="stylesheet" href="css/bolos.css?v=42">
+<link rel="preload" href="assets/fonts/bricolage-jb-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="css/jb.css?v=43">
+<link rel="stylesheet" href="css/bolos.css?v=43">
 </head>
 <body>
 
@@ -30,7 +31,7 @@
   <div class="wrap barra-topo">
     <button class="menu-bt" id="menuBt" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir o menu"><i></i></button>
     <a class="logo" href="index.html" aria-label="Jessica Ballassa Confeitaria, página inicial">
-      <img src="assets/selo-jb-256.png" alt="Jessica Ballassa Confeitaria" width="256" height="256">
+      <img src="assets/logo-jb.svg" alt="Jessica Ballassa Confeitaria" width="1467" height="1315">
     </a>
     <a class="pedir" href="#monta">Montar</a>
   </div>
@@ -58,7 +59,7 @@
     <div class="wrap grade-capa">
       <div class="texto-capa surge">
         <p class="eyebrow">Bolos por encomenda</p>
-        <h1 class="display">Um bolo do&nbsp;jeito <em>que você imaginou.</em></h1>
+        <h1 class="display">Um bolo do&nbsp;jeito <em>que você imaginou<span class="pt">.</span></em></h1>
         <p class="lead">Feito à mão, camada por camada. Escolha o tamanho, o modelo, a massa e o recheio, e veja o valor na hora.</p>
         <a class="bt cheio comecar" href="#monta">Começar meu bolo</a>
         <p class="status aberto"><span class="luz"></span><span id="proxData">Mínimo de 48 horas de antecedência</span></p>
@@ -88,7 +89,7 @@
     <div class="wrap">
       <div class="centro surge">
         <p class="eyebrow">Monte o seu</p>
-        <h2 class="h2" id="t-monta">Seu bolo, <em>passo a passo</em></h2>
+        <h2 class="h2" id="t-monta">Seu bolo, <em>passo a passo<span class="pt">.</span></em></h2>
       </div>
 
       <div class="monta-grade">
@@ -175,7 +176,7 @@
         <!-- Resumo, como uma comanda -->
         <aside class="lado">
           <section class="resumo" id="resumo" aria-live="polite">
-            <div class="cab"><img src="assets/selo-jb-256.png" alt="" width="44" height="44"><p class="sub">Jessica Ballassa · encomenda</p><h3>Seu pedido</h3></div>
+            <div class="cab"><img src="assets/selo-jb-256.png" alt="" width="44" height="44"><p class="sub">Jessica Ballassa · encomenda</p><h3>Seu pedido<span class="pt">.</span></h3></div>
             <div id="resumoLinhas"><p class="vazio">Escolha o tamanho e o modelo para ver o valor.</p></div>
             <div class="totais hide" id="totais">
               <div class="tot"><span>Total</span><b id="total">R$ 0,00</b></div>
@@ -198,7 +199,7 @@
     <div class="wrap">
       <div class="centro surge">
         <p class="eyebrow">Antes de pedir</p>
-        <h2 class="h2">Dúvidas <em>frequentes</em></h2>
+        <h2 class="h2">Dúvidas <em>frequentes<span class="pt">.</span></em></h2>
       </div>
       <div class="perguntas surge">
         <details>
@@ -234,7 +235,7 @@
     <div class="wrap centro">
       <span class="ornamento" aria-hidden="true"></span>
       <p class="eyebrow">Pedido enviado</p>
-      <h2 class="display">Obrigada, <em id="feitoNome"></em></h2>
+      <h2 class="display">Obrigada, <em id="feitoNome"></em><span class="pt">.</span></h2>
       <p class="codigo" id="feitoCodigo"></p>
       <p class="lead" id="feitoTexto"></p>
       <div class="botoes">
@@ -248,8 +249,8 @@
 
 <footer class="rodape">
   <div class="wrap">
-    <img class="marca" src="assets/selo-jb-256.png" alt="Jessica Ballassa Confeitaria" width="256" height="256">
-    <p class="lema">Aqui tem amor, carinho e muito sabor.</p>
+    <img class="marca" src="assets/logo-jb-nome.svg" alt="Jessica Ballassa Confeitaria" width="1709" height="1552">
+    <p class="lema">aqui tem amor<span class="pt">.</span></p>
     <nav aria-label="Rodapé">
       <a href="index.html">Início</a>
       <a href="index.html#delivery">Delivery</a>
@@ -268,9 +269,9 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/config.js?v=42"></script>
-<script src="js/comum.js?v=42"></script>
-<script src="js/bolos.js?v=42"></script>
+<script src="js/config.js?v=43"></script>
+<script src="js/comum.js?v=43"></script>
+<script src="js/bolos.js?v=43"></script>
 <script>
 (function(){
   const wa = linkWhats("Oi, Jessica! Queria falar sobre um bolo por encomenda :)");

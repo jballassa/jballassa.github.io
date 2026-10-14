@@ -343,3 +343,57 @@ a.app:hover{background:var(--blush);}
 @media (min-width:960px){ .heroi{padding-bottom:64px !important;} .faixa-garantias{padding-bottom:88px;} }
 .capa .garantias{margin-top:48px;}
 .app .nota{font-family:var(--serif);font-size:.98rem;font-weight:500;color:var(--cacau);font-style:italic;font-variant-numeric:lining-nums;}
+
+/* =====================================================================
+   IDENTIDADE NOVA (out/2026) · manual "a marca em 6 sinais"
+   ponto coral · cacau com rosa · arco · um brilho · letra grossa minúscula · Nº
+   Esta camada vem por último e só troca aparência; nada de comportamento.
+   ===================================================================== */
+@font-face{font-family:"JB Display";src:url("../assets/fonts/bricolage-jb-800.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;}
+@font-face{font-family:"JB Script";src:url("../assets/fonts/sacramento.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;}
+:root{
+  --papel:#F8F0EA;          /* papel da marca */
+  --creme:#FCF6F2;
+  --blush:#F6D9D3;          /* rosa da marca */
+  --pessego-claro:#FBE3D2;
+  --rosa:#F6D9D3;
+  --pessego:#F2B78F;
+  --coral:#D4685A;          /* só no ponto, no brilho e em um detalhe */
+  --assinatura:#D4685A;
+  --cacau:#4E2F2A;
+  --cacau-2:#6E4F45;
+  --cacau-3:#8E6F64;
+  --linha:#E9D6CB;
+  --coral-tx:#8A372C;       /* texto pequeno de destaque */
+  --serif:"JB Display", "Poppins", system-ui, sans-serif;
+  --script:"JB Script", cursive;
+}
+.pt{color:var(--coral);}
+/* títulos: letra grossa, minúscula, apertada, sem itálico */
+h1,h2,h3,.display,.h2{font-family:var(--serif);font-weight:800;letter-spacing:-.025em;text-transform:lowercase;}
+h1 em,h2 em,h3 em{font-style:normal;font-weight:800;}
+.display{line-height:.98;}
+.h2{line-height:1;}
+/* logo novo: jb. no topo, jb. com o nome no rodapé */
+.logo img{width:auto;height:40px;border-radius:0;}
+@media (min-width:960px){ .logo img{height:48px;width:auto;} }
+.rodape .marca{width:150px;height:auto;border-radius:0;}
+/* cursiva só como detalhe de uma palavra (assinatura) */
+.script{font-family:var(--script);font-style:normal;font-weight:400;color:var(--coral);font-size:1.9em;line-height:1;}
+.manifesto .assina{font-family:var(--script);font-style:normal;font-weight:400;font-size:2.4rem;letter-spacing:0;color:var(--coral);}
+.manifesto p:not(.assina):not(.eyebrow){font-family:var(--sans);font-style:normal;}
+/* o que era serifa itálica vira letra da marca */
+.lema{font-family:var(--serif) !important;font-style:normal !important;font-weight:800;font-size:1.5rem !important;letter-spacing:-.02em;}
+.menu a{font-family:var(--serif);font-weight:800;text-transform:lowercase;letter-spacing:-.02em;}
+.peca figcaption b,.cartao-menu .ln dt,.cartao-menu .modelos b,.endereco,.app b{font-family:var(--serif);font-style:normal;font-weight:800;letter-spacing:-.02em;}
+.cartao-menu .modelos b{text-transform:lowercase;}
+.app .nota{font-family:var(--sans);font-style:normal;font-weight:600;}
+/* botões e destaques em cacau com rosa */
+.bt{border-radius:999px;}
+.bt.linha:hover{color:var(--rosa);}
+.manifesto blockquote{font-family:var(--serif);font-style:normal;font-weight:800;letter-spacing:-.02em;text-transform:lowercase;color:var(--cacau);}
+.display{font-size:clamp(2.2rem, 1.4rem + 3.4vw, 4.1rem);}
+.perguntas summary{font-family:var(--sans);font-weight:500;font-size:1.02rem;line-height:1.4;}
+.link{font-family:var(--sans);font-style:normal;font-weight:500;}
+.script{font-size:2.3rem;}
+h1,h2,.display,.h2,.manifesto blockquote{text-wrap:balance;}
