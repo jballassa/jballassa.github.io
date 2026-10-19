@@ -9,13 +9,13 @@ window.JB = {
   delivery: "https://jbconfeitaria.saipos.com/?utm_source=site&utm_medium=linkbio&utm_campaign=bio",
 
   /* Os apps ficam em segundo plano de propósito. Link vazio vira só o nome. */
-  /* nota: o que o cliente vê em cada app. Conferir e atualizar de tempos em tempos (levantado em 17/09/2026). */
+  /* nota: o que o cliente vê em cada app. Conferir e atualizar de tempos em tempos (conferido nos portais em 20/10/2026: iFood 5, com 46 de 48 avaliações em 5 estrelas em 90 dias; Keeta 58 de 62 em 5 estrelas em 30 dias; o portal do 99Food não mostra mais a nota). */
   apps: [
     { nome: "iFood",  nota: "nota 5,0", url: "https://www.ifood.com.br/delivery/sao-paulo-sp/jb-confeitaria-bolo-de-pote-brownie-doces-vila-madalena/94072a9c-350e-499f-b17c-5c1fd3f1986c" },
-    { nome: "99Food", nota: "nota 4,8", url: "" },
-    { nome: "Keeta",  nota: "96% cinco estrelas", url: "" }
+    { nome: "99Food", nota: "", url: "" },
+    { nome: "Keeta",  nota: "95% cinco estrelas", url: "" }
   ],
-  notasData: "setembro de 2026",
+  notasData: "outubro de 2026",
 
   /* Cupons do delivery próprio, conferidos no Saipos em 13/10/2026, válidos até 31/12/2026. O VOLTEI (panfleto da sacola) fica fora do site de propósito. */
   cupons: [
@@ -67,6 +67,24 @@ window.JB = {
     6: [11 * 60, 22 * 60]
   },
   antecedenciaHoras: 48,
+
+  /* Loja de digitais (e-books e adesivos). O pagamento e a entrega são da Kiwify.
+     Para lançar um produto novo: cole o link do checkout em url. Link vazio = "em breve".
+     Preços conferidos na Kiwify em 19/10/2026 (valor à vista). */
+  loja: [
+    { id: "nuvem",    tipo: "E-book", nome: "Bolo Nuvem",          preco: 0,  url: "", novo: true,
+      texto: "O bolo da casa, do começo ao fim: massa, calda, brigadeiro meio amargo, creme nuvem, montagem, corte, validade e preço de venda." },
+    { id: "cookie",   tipo: "E-book", nome: "Cookie Kinder",       preco: 34, url: "https://pay.kiwify.com.br/S46PZDh",
+      texto: "O cookie recheado que sai do ateliê, com massa, recheio e o ponto certo do forno." },
+    { id: "gelato",   tipo: "E-book", nome: "Gelato Artesanal",    preco: 29, url: "https://pay.kiwify.com.br/y65joCs",
+      texto: "Gelato cremoso feito em casa, do jeito que a Jessica faz no ateliê." },
+    { id: "basca",    tipo: "E-book", nome: "Torta Basca",         preco: 24, url: "https://pay.kiwify.com.br/5YrSEcS",
+      texto: "A basca de centro cremoso e topo caramelizado, passo a passo." },
+    { id: "franui",   tipo: "E-book", nome: "Torta Franui",        preco: 24, url: "https://pay.kiwify.com.br/mS8899G",
+      texto: "A torta de framboesa com chocolate inspirada no Franui, camada por camada." },
+    { id: "adesivos", tipo: "Pack digital", nome: "Adesivos para Stories", preco: 52, url: "https://pay.kiwify.com.br/sB77I36",
+      texto: "Adesivos com a estética da JB para deixar os seus stories mais bonitos." }
+  ],
 
   supabase: {
     url: "https://yudtseanlkhxkmnranmg.supabase.co",
