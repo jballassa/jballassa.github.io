@@ -158,7 +158,7 @@
       const kiwify = /^https:\/\//.test(c.url || "");
       const botao = kiwify
         ? `<a class="bt" href="${esc(c.url)}" target="_blank" rel="noopener" data-produto="${esc(c.id)}">Comprar</a>`
-        : `<a class="bt" href="${linkWhats("Oi, Jessica! Quero a " + c.nome + " por " + reais(c.preco) + " :)")}" target="_blank" rel="noopener" data-produto="${esc(c.id)}">Quero</a>`;
+        : `<a class="bt" href="${linkWhats("Oi, Jessica! Quero o combo " + c.nome + " por " + reais(c.preco) + " :)")}" target="_blank" rel="noopener" data-produto="${esc(c.id)}">Quero</a>`;
       return `<article class="combo surge${c.destaque ? " destaque" : ""}">
         <div class="mini">${fotos}</div>
         <div class="corpo">
