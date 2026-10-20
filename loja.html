@@ -21,7 +21,7 @@
 <link rel="preload" href="assets/fonts/bricolage-jb-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="css/jb.css?v=44">
-<link rel="stylesheet" href="css/loja.css?v=45">
+<link rel="stylesheet" href="css/loja.css?v=46">
 </head>
 <body>
 
@@ -114,7 +114,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/config.js?v=46"></script>
+<script src="js/config.js?v=47"></script>
 <script src="js/comum.js?v=44"></script>
 <script>
 (function(){
@@ -145,15 +145,20 @@
     lista.appendChild(li);
   });
 
-  /* Combos com checkout aparecem antes da prateleira. */
+  /* Combos aparecem antes da prateleira. Com link da Kiwify o botão vai para o checkout;
+     sem link, o pedido vai pelo WhatsApp da Jessica (Pix e arquivos enviados por ela). */
   const porId = Object.fromEntries((J.loja || []).map(p => [p.id, p]));
-  const combos = (J.combos || []).filter(c => /^https:\/\//.test(c.url || "") && (c.itens || []).every(id => porId[id]));
+  const combos = (J.combos || []).filter(c => (c.itens || []).every(id => porId[id]));
   if (combos.length) {
     const box = $("combos");
     box.innerHTML = `<p class="eyebrow">Leve junto e economize</p>` + combos.map(c => {
       const de = c.itens.reduce((t, id) => t + Number(porId[id].preco || 0), 0);
       const fotos = c.itens.map(id => `<img src="assets/loja/${id}-480.jpg" alt="" width="480" height="600" loading="lazy" decoding="async">`).join("");
       const nomes = c.itens.map(id => esc(porId[id].nome)).join(" · ");
+      const kiwify = /^https:\/\//.test(c.url || "");
+      const botao = kiwify
+        ? `<a class="bt" href="${esc(c.url)}" target="_blank" rel="noopener" data-produto="${esc(c.id)}">Comprar</a>`
+        : `<a class="bt" href="${linkWhats("Oi, Jessica! Quero a " + c.nome + " por " + reais(c.preco) + " :)")}" target="_blank" rel="noopener" data-produto="${esc(c.id)}">Quero</a>`;
       return `<article class="combo surge${c.destaque ? " destaque" : ""}">
         <div class="mini">${fotos}</div>
         <div class="corpo">
@@ -163,8 +168,9 @@
           <p class="itens">${nomes}</p>
           <div class="compra">
             <div class="preco"><s>${reais(de)}</s>${reais(c.preco)}<small>economia de ${reais(de - c.preco)}</small></div>
-            <a class="bt" href="${esc(c.url)}" target="_blank" rel="noopener" data-produto="${esc(c.id)}">Comprar</a>
+            ${botao}
           </div>
+          ${kiwify ? "" : `<p class="via">Pedido pelo WhatsApp: pagamento no Pix e os arquivos chegam por lá.</p>`}
         </div>
       </article>`;
     }).join("");

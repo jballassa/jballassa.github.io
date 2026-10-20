@@ -86,7 +86,8 @@ window.JB = {
       texto: "Adesivos com a estética da JB para deixar os seus stories mais bonitos." }
   ],
 
-  /* Combos: aparecem no topo da loja só quando tiverem o link do checkout da Kiwify.
+  /* Combos: aparecem no topo da loja. Sem link da Kiwify, o botão "Quero" abre o WhatsApp da Jessica (Pix e envio manual).
+     Com o link do checkout em url, o botão vira "Comprar" na Kiwify.
      "itens" são os ids da lista acima; o "de" é a soma dos preços deles. destaque = cartão escuro. */
   combos: [
     { id: "colecao",   nome: "Coleção da Jessica", preco: 149.9, url: "", destaque: true,
