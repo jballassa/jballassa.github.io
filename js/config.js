@@ -72,7 +72,7 @@ window.JB = {
      Para lançar um produto novo: cole o link do checkout em url. Link vazio = "em breve".
      Preços conferidos na Kiwify em 19/10/2026 (valor à vista). */
   loja: [
-    { id: "nuvem",    tipo: "E-book", nome: "Bolo Nuvem",          preco: 0,  url: "", novo: true,
+    { id: "nuvem",    tipo: "E-book", nome: "Bolo Nuvem",          preco: 99.9, url: "", novo: true,
       texto: "O bolo da casa, do jeito que sai na nossa produção: massa, calda, brigadeiro meio amargo, creme nuvem em duas etapas, montagem, corte e validade." },
     { id: "cookie",   tipo: "E-book", nome: "Cookie Kinder",       preco: 34, url: "https://pay.kiwify.com.br/S46PZDh",
       texto: "O cookie recheado que sai do ateliê, com massa, recheio e o ponto certo do forno." },
@@ -84,6 +84,17 @@ window.JB = {
       texto: "A torta de framboesa com chocolate inspirada no Franui, camada por camada." },
     { id: "adesivos", tipo: "Pack digital", nome: "Adesivos para Stories", preco: 52, url: "https://pay.kiwify.com.br/sB77I36",
       texto: "Adesivos com a estética da JB para deixar os seus stories mais bonitos." }
+  ],
+
+  /* Combos: aparecem no topo da loja só quando tiverem o link do checkout da Kiwify.
+     "itens" são os ids da lista acima; o "de" é a soma dos preços deles. destaque = cartão escuro. */
+  combos: [
+    { id: "colecao",   nome: "Coleção da Jessica", preco: 149.9, url: "", destaque: true,
+      itens: ["nuvem", "cookie", "gelato", "basca", "franui", "adesivos"],
+      texto: "Todos os e-books e os adesivos para stories. Por pouco mais que o Bolo Nuvem sozinho." },
+    { id: "classicos", nome: "Kit Clássicos", preco: 79.9, url: "",
+      itens: ["cookie", "gelato", "basca", "franui"],
+      texto: "Cookie Kinder, Gelato, Torta Basca e Torta Franui." }
   ],
 
   supabase: {

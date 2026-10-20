@@ -21,7 +21,7 @@
 <link rel="preload" href="assets/fonts/bricolage-jb-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="css/jb.css?v=44">
-<link rel="stylesheet" href="css/loja.css?v=44">
+<link rel="stylesheet" href="css/loja.css?v=45">
 </head>
 <body>
 
@@ -64,6 +64,7 @@
 
   <section class="secao" id="receitas" style="padding-top:8px">
     <div class="wrap">
+      <div class="combos" id="combos" hidden></div>
       <ul class="prateleira" id="prateleira" aria-label="Produtos"></ul>
       <noscript><p class="lead">Para ver as receitas, ative o JavaScript ou chame a Jessica no WhatsApp.</p></noscript>
     </div>
@@ -113,7 +114,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/config.js?v=44"></script>
+<script src="js/config.js?v=45"></script>
 <script src="js/comum.js?v=44"></script>
 <script>
 (function(){
@@ -133,7 +134,7 @@
     const fim = temLink
       ? `<div class="preco">${reais(p.preco).replace(",00", "")}<small>à vista ou parcelado</small></div>
          <a class="bt" href="${esc(p.url)}" target="_blank" rel="noopener" data-produto="${esc(p.id)}">Comprar</a>`
-      : `<div class="preco">em breve</div>
+      : `<div class="preco">${p.preco ? reais(p.preco).replace(",00", "") + "<small>lançamento em breve</small>" : "em breve"}</div>
          <a class="bt linha" href="${linkWhats("Oi, Jessica! Quero ser avisada quando sair o e-book " + p.nome + " :)")}" rel="noopener">Me avise</a>`;
     const li = document.createElement("li");
     li.className = "produto surge" + (temLink ? "" : " breve");
@@ -143,6 +144,32 @@
          <p class="desc">${esc(p.texto)}</p><div class="compra">${fim}</div></div>`;
     lista.appendChild(li);
   });
+
+  /* Combos com checkout aparecem antes da prateleira. */
+  const porId = Object.fromEntries((J.loja || []).map(p => [p.id, p]));
+  const combos = (J.combos || []).filter(c => /^https:\/\//.test(c.url || "") && (c.itens || []).every(id => porId[id]));
+  if (combos.length) {
+    const box = $("combos");
+    box.innerHTML = `<p class="eyebrow">Leve junto e economize</p>` + combos.map(c => {
+      const de = c.itens.reduce((t, id) => t + Number(porId[id].preco || 0), 0);
+      const fotos = c.itens.map(id => `<img src="assets/loja/${id}-480.jpg" alt="" width="480" height="600" loading="lazy" decoding="async">`).join("");
+      const nomes = c.itens.map(id => esc(porId[id].nome)).join(" · ");
+      return `<article class="combo surge${c.destaque ? " destaque" : ""}">
+        <div class="mini">${fotos}</div>
+        <div class="corpo">
+          ${c.destaque ? `<span class="selo-combo">mais completo</span>` : ""}
+          <h2>${esc(c.nome.toLowerCase())}<span class="pt">.</span></h2>
+          <p class="desc">${esc(c.texto)}</p>
+          <p class="itens">${nomes}</p>
+          <div class="compra">
+            <div class="preco"><s>${reais(de)}</s>${reais(c.preco)}<small>economia de ${reais(de - c.preco)}</small></div>
+            <a class="bt" href="${esc(c.url)}" target="_blank" rel="noopener" data-produto="${esc(c.id)}">Comprar</a>
+          </div>
+        </div>
+      </article>`;
+    }).join("");
+    box.hidden = false;
+  }
 
   ligarMenu();
   ligarSurge();
