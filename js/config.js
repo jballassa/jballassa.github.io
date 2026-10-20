@@ -73,7 +73,7 @@ window.JB = {
      Preços conferidos na Kiwify em 19/10/2026 (valor à vista). */
   loja: [
     { id: "nuvem",    tipo: "E-book", nome: "Bolo Nuvem",          preco: 0,  url: "", novo: true,
-      texto: "O bolo da casa, do começo ao fim: massa, calda, brigadeiro meio amargo, creme nuvem, montagem, corte, validade e preço de venda." },
+      texto: "O bolo da casa, do jeito que sai na nossa produção: massa, calda, brigadeiro meio amargo, creme nuvem em duas etapas, montagem, corte e validade." },
     { id: "cookie",   tipo: "E-book", nome: "Cookie Kinder",       preco: 34, url: "https://pay.kiwify.com.br/S46PZDh",
       texto: "O cookie recheado que sai do ateliê, com massa, recheio e o ponto certo do forno." },
     { id: "gelato",   tipo: "E-book", nome: "Gelato Artesanal",    preco: 29, url: "https://pay.kiwify.com.br/y65joCs",
