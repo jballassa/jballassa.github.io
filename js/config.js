@@ -70,9 +70,9 @@ window.JB = {
 
   /* Loja de digitais (e-books e adesivos). O pagamento e a entrega são da Kiwify.
      Para lançar um produto novo: cole o link do checkout em url. Link vazio = "em breve".
-     Preços conferidos na Kiwify em 19/10/2026 (valor à vista). */
+     Preços conferidos na Kiwify em 19/10/2026 (valor à vista); Bolo Nuvem conferido em 20/10/2026. */
   loja: [
-    { id: "nuvem",    tipo: "E-book", nome: "Bolo Nuvem",          preco: 99.9, url: "", novo: true,
+    { id: "nuvem",    tipo: "E-book", nome: "Bolo Nuvem",          preco: 99.9, url: "https://pay.kiwify.com.br/dRvKBop", novo: true,
       texto: "O bolo da casa, do jeito que sai na nossa produção: massa, calda, brigadeiro meio amargo, creme nuvem em duas etapas, montagem, corte e validade." },
     { id: "cookie",   tipo: "E-book", nome: "Cookie Kinder",       preco: 34, url: "https://pay.kiwify.com.br/S46PZDh",
       texto: "O cookie recheado que sai do ateliê, com massa, recheio e o ponto certo do forno." },
