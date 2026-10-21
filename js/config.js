@@ -71,6 +71,9 @@ window.JB = {
   /* Loja de digitais (e-books e adesivos). O pagamento e a entrega são da Kiwify.
      Para lançar um produto novo: cole o link do checkout em url. Link vazio = "em breve".
      Preços conferidos nos checkouts da Kiwify em 21/10/2026 (preço cheio de cada página de pagamento). */
+  /* Produto em destaque no topo da loja (lançamento). Vazio = sem destaque. */
+  lojaDestaque: "nuvem",
+
   loja: [
     { id: "nuvem",    tipo: "E-book", nome: "Bolo Nuvem",          preco: 99.9, url: "https://pay.kiwify.com.br/dRvKBop", novo: true,
       texto: "O bolo da casa, do jeito que sai na nossa produção: massa, calda, brigadeiro meio amargo, creme nuvem em duas etapas, montagem, corte e validade." },

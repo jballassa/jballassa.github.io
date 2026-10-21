@@ -21,11 +21,11 @@
 <link rel="preload" href="assets/fonts/bricolage-jb-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="css/jb.css?v=44">
-<link rel="stylesheet" href="css/loja.css?v=46">
+<link rel="stylesheet" href="css/loja.css?v=47">
 </head>
 <body>
 
-<p class="faixa">Pagamento no Pix ou cartão · o acesso chega no seu e-mail</p>
+<p class="faixa"><a class="faixa-link" href="#nuvem">Lançamento: e-book Bolo Nuvem · a receita da casa</a></p>
 
 <header class="topo">
   <div class="wrap barra-topo">
@@ -54,16 +54,40 @@
 
 <main id="pagina">
 
-  <section class="loja-capa">
-    <div class="wrap surge">
-      <p class="eyebrow">Receitas da Jessica</p>
-      <h1 class="display">As receitas que saem <em>do ateliê<span class="pt">.</span></em></h1>
-      <p class="lead">Passo a passo, com as quantidades certas e os segredos de quem faz todo dia. Para fazer em casa ou para vender.</p>
+  <section class="lancamento" id="nuvem" aria-labelledby="lancTitulo">
+    <div class="wrap lanc">
+      <a class="lanc-foto" id="lancFoto" href="#receitas" tabindex="-1" aria-hidden="true">
+        <picture>
+          <source type="image/webp" srcset="assets/loja/nuvem-480.webp?v=2 480w, assets/loja/nuvem-800.webp?v=2 800w" sizes="(min-width:960px) 520px, 92vw">
+          <img src="assets/loja/nuvem-800.jpg?v=2" srcset="assets/loja/nuvem-480.jpg?v=2 480w, assets/loja/nuvem-800.jpg?v=2 800w" sizes="(min-width:960px) 520px, 92vw" alt="Bolo Nuvem: bolo de chocolate com brigadeiro meio amargo e creme nuvem" width="800" height="1000" fetchpriority="high">
+        </picture>
+        <span class="selo">lançamento</span>
+      </a>
+      <div class="lanc-texto">
+        <p class="eyebrow">Lançamento · e-book</p>
+        <h1 class="display" id="lancTitulo">bolo <em>nuvem<span class="pt">.</span></em></h1>
+        <p class="lead">O bolo da casa, do jeito que sai na nossa produção: massa de chocolate molhadinha, brigadeiro meio amargo e o creme nuvem, leve e aerado.</p>
+        <ul class="lanc-lista">
+          <li>A receita da produção: forma 30 x 30, 20 pedaços</li>
+          <li>Creme nuvem em duas etapas, com fotos do passo a passo</li>
+          <li>Montagem, corte, finalização e validade</li>
+        </ul>
+        <div class="lanc-compra">
+          <div class="preco" id="lancPreco">R$ 99,90<small>à vista ou em até 12x</small></div>
+          <a class="bt" id="lancBt" href="#receitas" target="_blank" rel="noopener" data-produto="nuvem">Comprar</a>
+        </div>
+        <p class="lanc-combo" id="lancCombo" hidden></p>
+      </div>
     </div>
   </section>
 
-  <section class="secao" id="receitas" style="padding-top:8px">
+  <section class="secao" id="receitas">
     <div class="wrap">
+      <div class="loja-titulo">
+        <p class="eyebrow">Receitas da Jessica</p>
+        <h2 class="h2">As receitas que saem <em>do ateliê<span class="pt">.</span></em></h2>
+        <p class="lead">Passo a passo, com as quantidades certas e os segredos de quem faz todo dia. Para fazer em casa ou para vender.</p>
+      </div>
       <div class="combos" id="combos" hidden></div>
       <ul class="prateleira" id="prateleira" aria-label="Produtos"></ul>
       <noscript><p class="lead">Para ver as receitas, ative o JavaScript ou chame a Jessica no WhatsApp.</p></noscript>
@@ -114,7 +138,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/config.js?v=49"></script>
+<script src="js/config.js?v=50"></script>
 <script src="js/comum.js?v=44"></script>
 <script>
 (function(){
@@ -125,8 +149,22 @@
   $("rodCnpj").textContent = J.cnpj;
 
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+  /* Lançamento em destaque no topo (JB.lojaDestaque). Ele sai da prateleira para não repetir. */
+  const dest = (J.loja || []).find(p => p.id === J.lojaDestaque);
+  if (dest) {
+    const ok = /^https:\/\//.test(dest.url || "");
+    $("lancPreco").innerHTML = reais(dest.preco).replace(",00", "") + "<small>" + (ok ? "à vista ou em até 12x" : "lançamento em breve") + "</small>";
+    const bt = $("lancBt");
+    if (ok) { bt.href = dest.url; $("lancFoto").href = dest.url; }
+    else { bt.href = linkWhats("Oi, Jessica! Quero ser avisada quando sair o e-book " + dest.nome + " :)"); bt.textContent = "Me avise"; }
+    const col = (J.combos || []).find(c => c.destaque && (c.itens || []).includes(dest.id));
+    if (col) { const lc = $("lancCombo"); lc.innerHTML = `ou leve <a href="#combos">todas as receitas e os adesivos por <span style="white-space:nowrap">${reais(col.preco)}</span></a>`; lc.hidden = false; }
+  } else {
+    $("nuvem").hidden = true;
+  }
+
   const lista = $("prateleira");
-  (J.loja || []).forEach(p => {
+  (J.loja || []).filter(p => !dest || p.id !== dest.id).forEach(p => {
     const temLink = /^https:\/\//.test(p.url || "");
     const img = `<picture><source type="image/webp" srcset="assets/loja/${p.id}-480.webp?v=2 480w, assets/loja/${p.id}-800.webp?v=2 800w" sizes="(min-width:960px) 360px, (min-width:600px) 45vw, 92vw">
       <img src="assets/loja/${p.id}-480.jpg?v=2" srcset="assets/loja/${p.id}-480.jpg?v=2 480w, assets/loja/${p.id}-800.jpg?v=2 800w" sizes="(min-width:960px) 360px, (min-width:600px) 45vw, 92vw" alt="${esc(p.tipo + " " + p.nome)}" width="800" height="1000" loading="lazy" decoding="async"></picture>`;
