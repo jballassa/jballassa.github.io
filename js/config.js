@@ -93,7 +93,7 @@ window.JB = {
     { id: "colecao",   nome: "Coleção da Jessica", preco: 149.9, url: "https://pay.kiwify.com.br/Kuu1r6K", destaque: true,
       itens: ["nuvem", "cookie", "gelato", "basca", "franui", "adesivos"],
       texto: "Todos os e-books e os adesivos para stories. Por pouco mais que o Bolo Nuvem sozinho." },
-    { id: "classicos", nome: "Kit Clássicos", preco: 79.9, url: "https://pay.kiwify.com.br/BucS1JD",
+    { id: "classicos", nome: "Kit Clássicos", preco: 119.9, url: "https://pay.kiwify.com.br/BucS1JD",
       itens: ["cookie", "gelato", "basca", "franui"],
       texto: "Cookie Kinder, Gelato, Torta Basca e Torta Franui." }
   ],

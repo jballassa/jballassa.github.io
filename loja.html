@@ -114,7 +114,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/config.js?v=48"></script>
+<script src="js/config.js?v=49"></script>
 <script src="js/comum.js?v=44"></script>
 <script>
 (function(){
@@ -128,8 +128,8 @@
   const lista = $("prateleira");
   (J.loja || []).forEach(p => {
     const temLink = /^https:\/\//.test(p.url || "");
-    const img = `<picture><source type="image/webp" srcset="assets/loja/${p.id}-480.webp 480w, assets/loja/${p.id}-800.webp 800w" sizes="(min-width:960px) 360px, (min-width:600px) 45vw, 92vw">
-      <img src="assets/loja/${p.id}-480.jpg" srcset="assets/loja/${p.id}-480.jpg 480w, assets/loja/${p.id}-800.jpg 800w" sizes="(min-width:960px) 360px, (min-width:600px) 45vw, 92vw" alt="${esc(p.tipo + " " + p.nome)}" width="800" height="1000" loading="lazy" decoding="async"></picture>`;
+    const img = `<picture><source type="image/webp" srcset="assets/loja/${p.id}-480.webp?v=2 480w, assets/loja/${p.id}-800.webp?v=2 800w" sizes="(min-width:960px) 360px, (min-width:600px) 45vw, 92vw">
+      <img src="assets/loja/${p.id}-480.jpg?v=2" srcset="assets/loja/${p.id}-480.jpg?v=2 480w, assets/loja/${p.id}-800.jpg?v=2 800w" sizes="(min-width:960px) 360px, (min-width:600px) 45vw, 92vw" alt="${esc(p.tipo + " " + p.nome)}" width="800" height="1000" loading="lazy" decoding="async"></picture>`;
     const selo = p.novo ? `<span class="selo">${temLink ? "novo" : "em breve"}</span>` : "";
     const fim = temLink
       ? `<div class="preco">${reais(p.preco).replace(",00", "")}<small>à vista ou parcelado</small></div>
@@ -153,7 +153,7 @@
     const box = $("combos");
     box.innerHTML = `<p class="eyebrow">Leve junto e economize</p>` + combos.map(c => {
       const de = c.itens.reduce((t, id) => t + Number(porId[id].preco || 0), 0);
-      const fotos = c.itens.map(id => `<img src="assets/loja/${id}-480.jpg" alt="" width="480" height="600" loading="lazy" decoding="async">`).join("");
+      const fotos = c.itens.map(id => `<img src="assets/loja/${id}-480.jpg?v=2" alt="" width="480" height="600" loading="lazy" decoding="async">`).join("");
       const nomes = c.itens.map(id => esc(porId[id].nome)).join(" · ");
       const kiwify = /^https:\/\//.test(c.url || "");
       const botao = kiwify
