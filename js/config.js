@@ -70,17 +70,17 @@ window.JB = {
 
   /* Loja de digitais (e-books e adesivos). O pagamento e a entrega são da Kiwify.
      Para lançar um produto novo: cole o link do checkout em url. Link vazio = "em breve".
-     Preços conferidos na Kiwify em 19/10/2026 (valor à vista); Bolo Nuvem conferido em 20/10/2026. */
+     Preços conferidos nos checkouts da Kiwify em 21/10/2026 (preço cheio de cada página de pagamento). */
   loja: [
     { id: "nuvem",    tipo: "E-book", nome: "Bolo Nuvem",          preco: 99.9, url: "https://pay.kiwify.com.br/dRvKBop", novo: true,
       texto: "O bolo da casa, do jeito que sai na nossa produção: massa, calda, brigadeiro meio amargo, creme nuvem em duas etapas, montagem, corte e validade." },
-    { id: "cookie",   tipo: "E-book", nome: "Cookie Kinder",       preco: 34, url: "https://pay.kiwify.com.br/S46PZDh",
+    { id: "cookie",   tipo: "E-book", nome: "Cookie Kinder",       preco: 59.9, url: "https://pay.kiwify.com.br/S46PZDh",
       texto: "O cookie recheado que sai do ateliê, com massa, recheio e o ponto certo do forno." },
-    { id: "gelato",   tipo: "E-book", nome: "Gelato Artesanal",    preco: 29, url: "https://pay.kiwify.com.br/y65joCs",
+    { id: "gelato",   tipo: "E-book", nome: "Gelato Artesanal",    preco: 59.9, url: "https://pay.kiwify.com.br/y65joCs",
       texto: "Gelato cremoso feito em casa, do jeito que a Jessica faz no ateliê." },
-    { id: "basca",    tipo: "E-book", nome: "Torta Basca",         preco: 24, url: "https://pay.kiwify.com.br/5YrSEcS",
+    { id: "basca",    tipo: "E-book", nome: "Torta Basca",         preco: 59.9, url: "https://pay.kiwify.com.br/5YrSEcS",
       texto: "A basca de centro cremoso e topo caramelizado, passo a passo." },
-    { id: "franui",   tipo: "E-book", nome: "Torta Franui",        preco: 24, url: "https://pay.kiwify.com.br/mS8899G",
+    { id: "franui",   tipo: "E-book", nome: "Torta Franui",        preco: 59.9, url: "https://pay.kiwify.com.br/mS8899G",
       texto: "A torta de framboesa com chocolate inspirada no Franui, camada por camada." },
     { id: "adesivos", tipo: "Pack digital", nome: "Adesivos para Stories", preco: 52, url: "https://pay.kiwify.com.br/sB77I36",
       texto: "Adesivos com a estética da JB para deixar os seus stories mais bonitos." }
@@ -90,10 +90,10 @@ window.JB = {
      Com o link do checkout em url, o botão vira "Comprar" na Kiwify.
      "itens" são os ids da lista acima; o "de" é a soma dos preços deles. destaque = cartão escuro. */
   combos: [
-    { id: "colecao",   nome: "Coleção da Jessica", preco: 149.9, url: "", destaque: true,
+    { id: "colecao",   nome: "Coleção da Jessica", preco: 149.9, url: "https://pay.kiwify.com.br/Kuu1r6K", destaque: true,
       itens: ["nuvem", "cookie", "gelato", "basca", "franui", "adesivos"],
       texto: "Todos os e-books e os adesivos para stories. Por pouco mais que o Bolo Nuvem sozinho." },
-    { id: "classicos", nome: "Kit Clássicos", preco: 79.9, url: "",
+    { id: "classicos", nome: "Kit Clássicos", preco: 79.9, url: "https://pay.kiwify.com.br/BucS1JD",
       itens: ["cookie", "gelato", "basca", "franui"],
       texto: "Cookie Kinder, Gelato, Torta Basca e Torta Franui." }
   ],
