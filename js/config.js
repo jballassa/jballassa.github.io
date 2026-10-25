@@ -30,17 +30,18 @@ window.JB = {
   /* Empresa, para o rodapé (obrigatório em site que recebe pedido). */
   cnpj: "47.010.705/0001-53",
 
-  /* Horário do DELIVERY próprio, confirmado pelo Henrique em 29/09/2026:
-     segunda a sábado das 11h às 22h45, domingo das 15h às 22h45 desde 04/10/2026, antes 14h às 21h45 (igual ao do ateliê).
+  /* Horário do DELIVERY próprio, confirmado pelo Henrique em 25/10/2026:
+     segunda a sábado das 10h30 às 22h45, domingo das 15h às 22h45 (igual ao do ateliê).
+     Antes: segunda a sábado 11h às 22h45 (até 25/10/2026); domingo 14h às 21h45 (até 03/10/2026).
      Fora do horário o Saipos aceita agendamento para os próximos 2 dias. */
   delivery_horario: {
     0: [15 * 60, 22 * 60 + 45],
-    1: [11 * 60, 22 * 60 + 45],
-    2: [11 * 60, 22 * 60 + 45],
-    3: [11 * 60, 22 * 60 + 45],
-    4: [11 * 60, 22 * 60 + 45],
-    5: [11 * 60, 22 * 60 + 45],
-    6: [11 * 60, 22 * 60 + 45]
+    1: [10 * 60 + 30, 22 * 60 + 45],
+    2: [10 * 60 + 30, 22 * 60 + 45],
+    3: [10 * 60 + 30, 22 * 60 + 45],
+    4: [10 * 60 + 30, 22 * 60 + 45],
+    5: [10 * 60 + 30, 22 * 60 + 45],
+    6: [10 * 60 + 30, 22 * 60 + 45]
   },
   delivery_agenda: true,
   delivery_minimo: 25,
@@ -48,23 +49,23 @@ window.JB = {
   /* Horário do ateliê (retirada e balcão). 0 = domingo. [abre, fecha] em minutos do dia. */
   horario: {
     0: [15 * 60, 22 * 60 + 45],
-    1: [11 * 60, 22 * 60 + 45],
-    2: [11 * 60, 22 * 60 + 45],
-    3: [11 * 60, 22 * 60 + 45],
-    4: [11 * 60, 22 * 60 + 45],
-    5: [11 * 60, 22 * 60 + 45],
-    6: [11 * 60, 22 * 60 + 45]
+    1: [10 * 60 + 30, 22 * 60 + 45],
+    2: [10 * 60 + 30, 22 * 60 + 45],
+    3: [10 * 60 + 30, 22 * 60 + 45],
+    4: [10 * 60 + 30, 22 * 60 + 45],
+    5: [10 * 60 + 30, 22 * 60 + 45],
+    6: [10 * 60 + 30, 22 * 60 + 45]
   },
 
   /* Janela de retirada das encomendas, de meia em meia hora. */
   retirada: {
     0: [15 * 60, 22 * 60],
-    1: [11 * 60, 22 * 60],
-    2: [11 * 60, 22 * 60],
-    3: [11 * 60, 22 * 60],
-    4: [11 * 60, 22 * 60],
-    5: [11 * 60, 22 * 60],
-    6: [11 * 60, 22 * 60]
+    1: [10 * 60 + 30, 22 * 60],
+    2: [10 * 60 + 30, 22 * 60],
+    3: [10 * 60 + 30, 22 * 60],
+    4: [10 * 60 + 30, 22 * 60],
+    5: [10 * 60 + 30, 22 * 60],
+    6: [10 * 60 + 30, 22 * 60]
   },
   antecedenciaHoras: 48,
 
