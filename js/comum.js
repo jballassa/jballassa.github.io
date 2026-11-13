@@ -32,6 +32,36 @@ function agoraSP(){
   };
 }
 
+/* Pix copia e cola (BR Code estático do Banco Central) com valor e identificador.
+   Função pura: mesma entrada, mesmo código. CRC16-CCITT no fim, como o padrão pede. */
+function pixCampo(id, v){ return id + String(v.length).padStart(2, "0") + v; }
+function pixLimpo(t, max){
+  return String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Za-z0-9 ]/g, "").trim().toUpperCase().slice(0, max);
+}
+function pixCrc(t){
+  let c = 0xFFFF;
+  for(let i = 0; i < t.length; i++){
+    c ^= t.charCodeAt(i) << 8;
+    for(let b = 0; b < 8; b++) c = (c & 0x8000) ? ((c << 1) ^ 0x1021) & 0xFFFF : (c << 1) & 0xFFFF;
+  }
+  return c.toString(16).toUpperCase().padStart(4, "0");
+}
+function pixCopiaECola(valor, txid){
+  const P = (window.JB && window.JB.pix) || null;
+  if(!P || !P.chave || !(Number(valor) > 0)) return "";
+  const id = pixLimpo(txid, 25).replace(/ /g, "") || "***";
+  const corpo = pixCampo("00", "01")
+    + pixCampo("26", pixCampo("00", "br.gov.bcb.pix") + pixCampo("01", P.chave))
+    + pixCampo("52", "0000") + pixCampo("53", "986")
+    + pixCampo("54", Number(valor).toFixed(2))
+    + pixCampo("58", "BR")
+    + pixCampo("59", pixLimpo(P.nome, 25) || "JB CONFEITARIA")
+    + pixCampo("60", pixLimpo(P.cidade, 15) || "SAO PAULO")
+    + pixCampo("62", pixCampo("05", id))
+    + "6304";
+  return corpo + pixCrc(corpo);
+}
+
 function linkWhats(texto){
   return "https://wa.me/" + window.JB.whats + "?text=" + encodeURIComponent(texto);
 }
