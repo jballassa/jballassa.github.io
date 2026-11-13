@@ -71,7 +71,9 @@ window.JB = {
     5: [10 * 60 + 30, 22 * 60],
     6: [10 * 60 + 30, 22 * 60]
   },
-  antecedenciaHoras: 48,
+  /* Antecedência das encomendas (pedido da Jessica em 13/11/2026): 2 dias inteiros de produção.
+     O dia do pedido não conta: pediu na sexta, em qualquer horário, retira a partir de segunda. */
+  antecedenciaDias: 2,
 
   /* Loja de digitais (e-books e adesivos). O pagamento e a entrega são da Kiwify.
      Para lançar um produto novo: cole o link do checkout em url. Link vazio = "em breve".

@@ -319,9 +319,15 @@ function desenharForma(){
 }
 
 /* ---------------- data e hora ---------------- */
-/* O primeiro instante possível é agora + 48h. Os horários de retirada vêm da config. */
+/* O primeiro dia possível: hoje (São Paulo) mais os dias inteiros de produção mais um.
+   O dia do pedido não conta. Os horários de retirada vêm da config. */
+function primeiroDiaDeRetirada(){
+  const x = new Date(agoraSP().data + "T12:00:00-03:00");
+  x.setUTCDate(x.getUTCDate() + (window.JB.antecedenciaDias || 2) + 1);
+  return dataSP(x);
+}
 function minimoRetirada(){
-  return new Date(agoraSP().instante.getTime() + window.JB.antecedenciaHoras * 3600e3);
+  return instanteDe(primeiroDiaDeRetirada(), 0);
 }
 function dataSP(d){
   return new Intl.DateTimeFormat("en-CA", { timeZone:"America/Sao_Paulo", year:"numeric", month:"2-digit", day:"2-digit" }).format(d);
@@ -493,7 +499,7 @@ function faltando(){
 }
 
 const RECADOS = {
-  antecedencia: "Esse horário ficou a menos de 48 horas. Escolha um pouco mais para frente.",
+  antecedencia: "Precisamos de 2 dias inteiros para fazer o seu bolo, sem contar o dia do pedido. Escolha um dia mais para frente.",
   limite: "Recebemos várias encomendas desse número hoje. Fale com a gente direto no WhatsApp.",
   whats: "Confira o número do WhatsApp, com DDD.",
   nome: "Escreva o seu nome.",
@@ -678,7 +684,7 @@ async function iniciar(){
     + horaCurta(window.JB.retirada[1][0]) + " às " + horaCurta(window.JB.retirada[1][1])
     + ", domingo das " + horaCurta(window.JB.retirada[0][0]) + " às " + horaCurta(window.JB.retirada[0][1]) + ".";
   $("data").addEventListener("change", () => {
-    if($("data").value && $("data").value < d0){ $("data").value = d0; toast("Precisamos de 48 horas. Ajustei para o primeiro dia possível."); }
+    if($("data").value && $("data").value < d0){ $("data").value = d0; toast("Precisamos de 2 dias inteiros, sem contar hoje. Ajustei para o primeiro dia possível."); }
     montarHoras();
   });
 
