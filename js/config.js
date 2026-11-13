@@ -30,6 +30,10 @@ window.JB = {
   /* Empresa, para o rodapé (obrigatório em site que recebe pedido). */
   cnpj: "47.010.705/0001-53",
 
+  /* Pix do sinal das encomendas (chave CNPJ, decisão do Henrique em 13/11/2026).
+     O site monta o Pix copia e cola com o valor do sinal e o código do pedido. */
+  pix: { chave: "47010705000153", nome: "JB CONFEITARIA", cidade: "SAO PAULO" },
+
   /* Horário do DELIVERY próprio, confirmado pelo Henrique em 25/10/2026:
      segunda a sábado das 10h30 às 22h45, domingo das 15h às 22h45 (igual ao do ateliê).
      Antes: segunda a sábado 11h às 22h45 (até 25/10/2026); domingo 14h às 21h45 (até 03/10/2026).

@@ -525,8 +525,20 @@ function mensagem(c, codigo){
   if(ob) L.push("Observações: " + ob);
   L.push("");
   L.push("Nome: " + $("nome").value.trim());
+  const pix = orcamentoPedido() ? "" : pixCopiaECola(c.sinal, codigo || "SITE");
+  L.push("");
+  if(pix){
+    L.push("Vou pagar agora o sinal de " + reais(c.sinal) + " pelo Pix e te mando o comprovante aqui.");
+    L.push("Pix copia e cola (CNPJ " + window.JB.cnpj + "):");
+    L.push(pix);
+  } else {
+    L.push("Aguardo o orçamento para pagar o sinal.");
+  }
   return L.join("\n");
 }
+
+/* algo fora da lista no chantininho: a Jessica fecha o valor antes de qualquer Pix */
+function orcamentoPedido(){ return S.modelo === "mod_chant" && !!$("outro").value.trim(); }
 
 async function enviar(ev){
   ev.preventDefault();
@@ -606,14 +618,33 @@ function mostrarFeito(codigo, sinal, link, falhou){
   $("feitoNome").textContent = $("nome").value.trim().split(" ")[0];
   $("feitoCodigo").textContent = codigo ? "Pedido " + codigo : "";
   $("feitoCodigo").classList.toggle("hide", !codigo);
+  const orc = orcamentoPedido();
+  const pix = orc ? "" : pixCopiaECola(sinal, codigo || "SITE");
   $("feitoTexto").textContent = (falhou
       ? "Não conseguimos registrar agora, mas o seu pedido está todo escrito na mensagem do WhatsApp. É só enviar. "
       : "O seu pedido já chegou para a Jessica. ")
-    + "Ela te responde no WhatsApp para confirmar e manda a chave Pix do sinal de " + reais(sinal)
-    + ". A data fica reservada assim que o sinal cair.";
+    + (pix
+      ? "Para reservar a data, pague o sinal de " + reais(sinal).replace(" ", "\u00a0") + " pelo Pix abaixo e mande o comprovante no WhatsApp."
+      : "Ela te responde no WhatsApp com o orçamento e o valor do sinal.");
+  $("feitoPix").classList.toggle("hide", !pix);
+  if(pix){
+    $("feitoPixValor").textContent = reais(sinal);
+    $("feitoPixCodigo").value = pix;
+    $("feitoPixChave").textContent = "Chave Pix CNPJ " + window.JB.cnpj + ", JB Confeitaria";
+  }
   $("feitoWhats").href = link;
   window.scrollTo({ top:0, behavior:"smooth" });
   $("feito").focus({ preventScroll:true });
+}
+
+/* copiar o Pix: área de transferência, ou deixa o texto selecionado para copiar à mão */
+async function copiarPix(){
+  const ta = $("feitoPixCodigo");
+  let ok = false;
+  try { await navigator.clipboard.writeText(ta.value); ok = true; } catch(e){}
+  if(!ok){ ta.focus(); ta.select(); try { ok = document.execCommand("copy"); } catch(e){} }
+  marcar("copiar_pix");
+  toast(ok ? "Pix copiado. Agora é só colar no app do banco." : "O código ficou selecionado: copie e cole no app do banco.");
 }
 
 /* ---------------- ligar ---------------- */
@@ -621,6 +652,7 @@ async function iniciar(){
   $("rodEnd").textContent = window.JB.endereco;
   if($("rodCnpj")) $("rodCnpj").textContent = window.JB.cnpj || "";
   medirCliques({ rodWhats:"whatsapp", navWhats:"whatsapp", menuWhats:"whatsapp", barraIr:"barra" });
+  if($("feitoPixCopiar")) $("feitoPixCopiar").addEventListener("click", copiarPix);
   document.querySelectorAll(".comecar").forEach(a => a.addEventListener("click", () => marcar("comecar_bolo")));
   /* os chips de ocasião já preenchem o campo do passo final e levam ao montador */
   document.querySelectorAll(".ocasioes button").forEach(b => b.addEventListener("click", () => {

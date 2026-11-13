@@ -21,7 +21,7 @@
 <link rel="preload" href="assets/fonts/bricolage-jb-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="css/jb.css?v=43">
-<link rel="stylesheet" href="css/bolos.css?v=43">
+<link rel="stylesheet" href="css/bolos.css?v=44">
 </head>
 <body>
 
@@ -71,7 +71,7 @@
         <ol>
           <li><i>I</i><div><b>Monte o seu bolo aqui</b><span>O valor aparece enquanto você escolhe.</span></div></li>
           <li><i>II</i><div><b>Envie pelo WhatsApp</b><span>O pedido chega pronto para a Jessica.</span></div></li>
-          <li><i>III</i><div><b>A Jessica confirma com você</b><span>Ela responde, manda a chave Pix do sinal e reserva a data.</span></div></li>
+          <li><i>III</i><div><b>Pague o sinal no Pix</b><span>O Pix do sinal já vem pronto. A Jessica confere e reserva a data.</span></div></li>
         </ol>
       </div>
     </div>
@@ -187,7 +187,7 @@
             <p class="erro hide" id="erro" role="alert"></p>
             <button type="submit" class="bt cheio" id="enviar">Enviar pedido pelo WhatsApp</button>
             <p class="aviso hide" id="avisoReserva">Estamos sem conexão com o nosso cardápio agora. Os valores são os da última atualização e a Jessica confirma no WhatsApp.</p>
-            <p class="letra">A data só fica reservada depois que a Jessica confirmar e o sinal de 50% cair no Pix. O restante é pago na retirada.</p>
+            <p class="letra">Ao enviar, o Pix do sinal de 50% já vem pronto. A data fica reservada quando a Jessica conferir o sinal; se ela não puder fazer o seu bolo nessa data, devolvemos o sinal inteiro. O restante é pago na retirada.</p>
             <p class="letra privacidade">Usamos seu nome e WhatsApp só para este pedido. Nada de propaganda. <a href="privacidade.html">Como cuidamos dos seus dados</a></p>
           </section>
         </aside>
@@ -213,7 +213,7 @@
         </details>
         <details>
           <summary>Como funciona o pagamento?</summary>
-          <p>Depois que a Jessica confirma o pedido pelo WhatsApp, um sinal de 50% no Pix reserva a sua data. O restante é pago na retirada.</p>
+          <p>Ao enviar o pedido, você recebe o Pix copia e cola do sinal de 50%, já com o valor. Pagou, é só mandar o comprovante no WhatsApp: a Jessica confere e a data fica reservada. Se ela não puder fazer o seu bolo nessa data, devolvemos o sinal inteiro. O restante é pago na retirada. Pedidos com decoração fora da lista recebem o orçamento antes do Pix.</p>
         </details>
         <details id="faqCancelar">
           <summary>E se eu precisar cancelar ou mudar o pedido?</summary>
@@ -239,8 +239,17 @@
       <h2 class="display">Obrigada, <em id="feitoNome"></em><span class="pt">.</span></h2>
       <p class="codigo" id="feitoCodigo"></p>
       <p class="lead" id="feitoTexto"></p>
+      <div class="pix hide" id="feitoPix">
+        <p class="sub">Sinal de 50% no Pix</p>
+        <p class="pix-valor" id="feitoPixValor"></p>
+        <label class="pix-rot" for="feitoPixCodigo">Pix copia e cola</label>
+        <textarea id="feitoPixCodigo" class="pix-codigo" rows="4" readonly></textarea>
+        <button type="button" class="bt cheio" id="feitoPixCopiar">Copiar o Pix</button>
+        <p class="letra" id="feitoPixChave"></p>
+        <p class="letra">Se a Jessica não puder fazer o seu bolo nessa data, devolvemos o sinal inteiro.</p>
+      </div>
       <div class="botoes">
-        <a class="bt" id="feitoWhats" href="#" rel="noopener">Abrir o WhatsApp</a>
+        <a class="bt" id="feitoWhats" href="#" rel="noopener">Mandar o comprovante no WhatsApp</a>
         <button type="button" class="bt linha" id="outroPedido">Montar outro bolo</button>
       </div>
       <p class="script" style="font-size:1.5rem;margin:34px 0 0">com carinho, Jessica</p>
@@ -271,9 +280,9 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/config.js?v=51"></script>
-<script src="js/comum.js?v=43"></script>
-<script src="js/bolos.js?v=43"></script>
+<script src="js/config.js?v=52"></script>
+<script src="js/comum.js?v=44"></script>
+<script src="js/bolos.js?v=44"></script>
 <script>
 (function(){
   const wa = linkWhats("Oi, Jessica! Queria falar sobre um bolo por encomenda :)");
