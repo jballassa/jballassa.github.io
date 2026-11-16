@@ -108,6 +108,20 @@ window.JB = {
       texto: "Cookie Kinder, Gelato, Torta Basca e Torta Franui." }
   ],
 
+  /* Página de parcerias (parcerias.html). Os números aparecem como selos; conferir de tempos em tempos.
+     Conferidos nos portais e no Instagram em 16/11/2026. */
+  parcerias: {
+    instagramJessica: "https://www.instagram.com/jeballassa/",
+    numeros: [
+      { valor: "15 mil", texto: "seguidores no @jballassaconfeitaria" },
+      { valor: "95%",    texto: "das avaliações da Keeta com 5 estrelas" },
+      { valor: "Super",  texto: "selo de loja Super no iFood" },
+      { valor: "4,8",    texto: "de nota na 99Food, com cerca de 200 avaliações em 90 dias" }
+    ],
+    numerosData: "novembro de 2026",
+    resposta: "3 dias úteis"
+  },
+
   supabase: {
     url: "https://yudtseanlkhxkmnranmg.supabase.co",
     chave: "sb_publishable_M77s2Y-DZGl0xLZYYGKniA_ZdkxBO8O"
