@@ -174,7 +174,7 @@
       $("feitoWhats").textContent = "Enviar pelo WhatsApp";
     } else {
       $("feitoTexto").textContent = "A sua ideia chegou para a gente. Respondemos em até " + (P.resposta || "3 dias úteis")
-        + " pelo contato que você deixou. Se for urgente, chame no WhatsApp.";
+        + " pelo contato que você deixou. Se for urgente, chame no WhatsApp ou escreva para " + (P.email || "jbconfeitariaparcerias@gmail.com") + ".";
       $("feitoWhats").textContent = "Chamar no WhatsApp";
     }
     $("feito").focus({ preventScroll: true });
@@ -182,7 +182,7 @@
     ENVIANDO = false;
   });
 
-  medirCliques({ btMidiaKit: "parceria_midiakit", btHeroiIdeia: "parceria_contar" });
+  medirCliques({ btMidiaKit: "parceria_midiakit", btHeroiIdeia: "parceria_contar", lnkEmail: "parceria_email" });
   ligarMenu();
   ligarSurge();
 })();

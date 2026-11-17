@@ -112,6 +112,7 @@ window.JB = {
      Conferidos nos portais e no Instagram em 16/11/2026. */
   parcerias: {
     instagramJessica: "https://www.instagram.com/jeballassa/",
+    email: "jbconfeitariaparcerias@gmail.com",   /* Gmail da JB para parcerias, criado em 17/11/2026 */
     numeros: [
       { valor: "15 mil", texto: "seguidores no @jballassaconfeitaria" },
       { valor: "95%",    texto: "das avaliações da Keeta com 5 estrelas" },
