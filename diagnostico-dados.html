@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="pt-BR" class="sem-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seus dados para o diagnóstico · Jessica Ballassa</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F8F0EA">
+<link rel="icon" href="assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/selo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="assets/fonts/bricolage-jb-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="css/jb.css?v=44">
+<link rel="stylesheet" href="css/parcerias.css?v=2">
+<link rel="stylesheet" href="css/diagnostico.css?v=1">
+</head>
+<body>
+
+<p class="faixa">Diagnóstico de crescimento · seus dados ficam só com a gente</p>
+
+<header class="topo">
+  <div class="wrap barra-topo">
+    <span></span>
+    <a class="logo" href="index.html" aria-label="Jessica Ballassa Confeitaria, página inicial">
+      <img src="assets/logo-jb.svg" alt="Jessica Ballassa Confeitaria" width="1467" height="1315">
+    </a>
+    <span></span>
+  </div>
+</header>
+
+<main id="pagina">
+  <div class="wrap dados-wrap">
+
+    <section class="dados-topo">
+      <p class="eyebrow" id="codTopo">Diagnóstico de crescimento</p>
+      <h1 class="h2" id="ola">seus <em>dados<span class="pt">.</span></em></h1>
+      <p class="lead">Quanto mais completo, mais certeiro fica o seu plano. Leva de 20 a 30 minutos. Não sabe um número exato? Coloque o valor aproximado. Dá para salvar e continuar depois pelo mesmo link.</p>
+      <ul class="dados-passos" id="passos"></ul>
+    </section>
+
+    <div class="aviso-cod hide" id="semCodigo">
+      <h2 class="h2">falta o <em>código<span class="pt">.</span></em></h2>
+      <p class="lead" id="semCodigoTx">Este formulário abre pelo link que a gente manda depois do pagamento do diagnóstico.</p>
+      <div class="botoes">
+        <a class="bt" id="semCodigoWhats" href="#" rel="noopener">Chamar no WhatsApp</a>
+        <a class="bt linha" href="diagnostico.html">Conhecer o diagnóstico</a>
+      </div>
+    </div>
+
+    <form id="formDados" class="hide" novalidate>
+
+      <fieldset class="bloco" id="b1">
+        <legend>1. Você e a loja</legend>
+        <p class="ajuda">Para a gente conhecer quem está do outro lado.</p>
+        <div class="linha2">
+          <label class="campo" id="lb_nome">Seu nome <input name="nome" maxlength="80" autocomplete="name"></label>
+          <label class="campo" id="lb_loja">Nome da loja <input name="loja" maxlength="80" autocomplete="organization"></label>
+        </div>
+        <div class="linha2">
+          <label class="campo" id="lb_whats">WhatsApp <input name="whats" maxlength="20" inputmode="tel" autocomplete="tel" placeholder="(11) 99999-9999"></label>
+          <label class="campo">Instagram da loja <input name="instagram" maxlength="60" placeholder="@sualoja" autocapitalize="off" spellcheck="false"></label>
+        </div>
+        <div class="linha2">
+          <label class="campo" id="lb_bairro">Cidade e bairro <input name="bairro" maxlength="80" placeholder="Ex.: São Paulo, Bairro do Limão"></label>
+          <label class="campo">Há quanto tempo vende <input name="tempo_loja" maxlength="60" placeholder="Ex.: 2 anos, desde 2023"></label>
+        </div>
+        <div class="linha2">
+          <label class="campo">Onde produz
+            <select name="onde_produz"><option value="">Escolha</option><option>Em casa</option><option>Ateliê ou cozinha própria</option><option>Loja com atendimento</option><option>Cozinha alugada ou compartilhada</option></select>
+          </label>
+          <label class="campo">Quem trabalha na loja <input name="equipe" maxlength="120" placeholder="Ex.: eu e minha mãe, 1 ajudante 3x por semana"></label>
+        </div>
+        <label class="campo">Dias e horários de funcionamento <input name="horarios" maxlength="160" placeholder="Ex.: terça a domingo, das 12h às 21h"></label>
+      </fieldset>
+
+      <fieldset class="bloco" id="b2">
+        <legend>2. Onde você vende</legend>
+        <p class="ajuda">Marque tudo o que usa hoje e cole os links das suas lojas nos apps.</p>
+        <span class="grupo-tit">Canais</span>
+        <div class="checks">
+          <label><input type="checkbox" name="canais" value="iFood"> iFood</label>
+          <label><input type="checkbox" name="canais" value="99Food"> 99Food</label>
+          <label><input type="checkbox" name="canais" value="Keeta"> Keeta</label>
+          <label><input type="checkbox" name="canais" value="WhatsApp ou Instagram"> WhatsApp ou Instagram</label>
+          <label><input type="checkbox" name="canais" value="Site ou cardápio próprio"> Site ou cardápio próprio</label>
+          <label><input type="checkbox" name="canais" value="Encomendas"> Encomendas</label>
+          <label><input type="checkbox" name="canais" value="Feiras e eventos"> Feiras e eventos</label>
+          <label><input type="checkbox" name="canais" value="Revenda em cafés e lojas"> Revenda em cafés e lojas</label>
+        </div>
+        <label class="campo">Links das suas lojas nos apps <textarea name="links_apps" rows="3" maxlength="800" placeholder="Cole um link por linha"></textarea></label>
+        <label class="campo">Quanto cada canal pesa nas vendas <small>aproximado</small> <input name="peso_canais" maxlength="160" placeholder="Ex.: 99 50%, iFood 30%, Keeta 15%, WhatsApp 5%"></label>
+      </fieldset>
+
+      <fieldset class="bloco" id="b3">
+        <legend>3. Seus números</legend>
+        <p class="ajuda">Dos últimos três meses. Valor de venda é o total que o cliente pagou; valor recebido é o que caiu na sua conta.</p>
+        <div class="linha3">
+          <label class="campo" id="lb_venda_m1">Vendas mês 1 <input name="venda_m1" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+          <label class="campo">Vendas mês 2 <input name="venda_m2" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+          <label class="campo">Vendas mês 3 <input name="venda_m3" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+        </div>
+        <div class="linha3">
+          <label class="campo">Recebido mês 1 <input name="recebido_m1" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+          <label class="campo">Recebido mês 2 <input name="recebido_m2" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+          <label class="campo">Recebido mês 3 <input name="recebido_m3" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+        </div>
+        <div class="linha3">
+          <label class="campo" id="lb_pedidos_mes">Pedidos por mês <input name="pedidos_mes" maxlength="30" inputmode="numeric"></label>
+          <label class="campo">Ticket médio <input name="ticket" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+          <label class="campo">Quais meses <input name="meses_ref" maxlength="40" placeholder="Ex.: ago, set, out"></label>
+        </div>
+        <div class="linha3">
+          <label class="campo">Nota no iFood <input name="nota_ifood" maxlength="20" inputmode="decimal"></label>
+          <label class="campo">Nota na 99Food <input name="nota_99" maxlength="20" inputmode="decimal"></label>
+          <label class="campo">Nota na Keeta <input name="nota_keeta" maxlength="20" inputmode="decimal"></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="bloco" id="b4">
+        <legend>4. Cardápio e preços</legend>
+        <p class="ajuda">Seus produtos mais vendidos, até 8. O custo é quanto você gasta para fazer uma unidade, com ingredientes e embalagem. Se não sabe, deixe em branco que a gente estima.</p>
+        <div class="produtos" id="produtos"></div>
+        <button class="bt linha pequeno" type="button" id="maisProduto">Adicionar produto</button>
+        <div class="linha2" style="margin-top:18px">
+          <label class="campo">Já calculou custo ou ficha técnica?
+            <select name="ficha"><option value="">Escolha</option><option>Sim, de todos</option><option>De alguns</option><option>Ainda não</option></select>
+          </label>
+          <label class="campo">Quantos produtos tem no cardápio <input name="qtd_cardapio" maxlength="20" inputmode="numeric"></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="bloco" id="b5">
+        <legend>5. Promoções e anúncios</legend>
+        <div class="linha2">
+          <label class="campo">Promoções que usa hoje <textarea name="promocoes" rows="3" maxlength="800" placeholder="Ex.: 99 com 30% em tudo, iFood cupom de R$ 10, Keeta frete grátis"></textarea></label>
+          <label class="campo">Anúncios pagos nos apps ou no Instagram <textarea name="anuncios" rows="3" maxlength="600" placeholder="Onde e quanto por mês"></textarea></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="bloco" id="b6">
+        <legend>6. Custos do mês</legend>
+        <p class="ajuda">Valores aproximados por mês.</p>
+        <div class="linha3">
+          <label class="campo">Aluguel <input name="c_aluguel" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+          <label class="campo">Luz, gás e água <input name="c_contas" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+          <label class="campo">Pessoas <input name="c_pessoas" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+        </div>
+        <div class="linha3">
+          <label class="campo">Imposto (MEI ou Simples) <input name="c_imposto" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+          <label class="campo">Outros fixos <input name="c_outros" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+          <label class="campo">Quanto você tira para você <input name="prolabore" maxlength="30" inputmode="decimal" placeholder="R$"></label>
+        </div>
+        <label class="campo">Empresa
+          <select name="empresa"><option value="">Escolha</option><option>MEI</option><option>Simples Nacional</option><option>Ainda sem CNPJ</option><option>Não sei</option></select>
+        </label>
+      </fieldset>
+
+      <fieldset class="bloco" id="b7">
+        <legend>7. O que está pegando</legend>
+        <span class="grupo-tit">Maiores dificuldades hoje</span>
+        <div class="checks">
+          <label><input type="checkbox" name="dores" value="Poucos pedidos"> Poucos pedidos</label>
+          <label><input type="checkbox" name="dores" value="Vende mas não sobra"> Vende, mas não sobra</label>
+          <label><input type="checkbox" name="dores" value="Não sei se o preço está certo"> Não sei se o preço está certo</label>
+          <label><input type="checkbox" name="dores" value="Promoções demais"> Promoções demais</label>
+          <label><input type="checkbox" name="dores" value="Falta tempo ou gente"> Falta tempo ou gente</label>
+          <label><input type="checkbox" name="dores" value="Atraso ou falta de produto"> Atraso ou falta de produto</label>
+          <label><input type="checkbox" name="dores" value="Fotos e cardápio"> Fotos e cardápio</label>
+          <label><input type="checkbox" name="dores" value="Avaliações"> Avaliações</label>
+          <label><input type="checkbox" name="dores" value="Organização financeira"> Organização financeira</label>
+          <label><input type="checkbox" name="dores" value="Depender dos apps"> Depender dos apps</label>
+        </div>
+        <label class="campo" id="lb_dor_maior">Se pudesse resolver uma coisa só, qual seria? <textarea name="dor_maior" rows="3" maxlength="800"></textarea></label>
+        <label class="campo">O que você já tentou <textarea name="ja_tentou" rows="3" maxlength="800"></textarea></label>
+      </fieldset>
+
+      <fieldset class="bloco" id="b8">
+        <legend>8. Onde quer chegar</legend>
+        <label class="campo" id="lb_meta">Sua meta para os próximos 3 a 6 meses <textarea name="meta" rows="3" maxlength="800" placeholder="Ex.: vender R$ 15 mil por mês, sobrar R$ 4 mil, contratar uma ajudante"></textarea></label>
+        <label class="campo">Quantas horas por semana você consegue dedicar às mudanças <input name="horas_semana" maxlength="40"></label>
+      </fieldset>
+
+      <fieldset class="bloco" id="b9">
+        <legend>9. Prints e chamada</legend>
+        <p class="ajuda">Mande os prints dos relatórios financeiros dos apps dos últimos 30 a 90 dias, do seu cardápio e das promoções ativas. Pode ser uma pasta do Google Drive com o link aqui, ou por e-mail para <a id="lnkEmailDados" href="#"></a> com o seu código no assunto.</p>
+        <label class="campo">Link da pasta com os prints <small>opcional</small> <input name="link_pasta" maxlength="300" placeholder="https://drive.google.com/..." autocapitalize="off" spellcheck="false"></label>
+        <div class="checks">
+          <label><input type="checkbox" name="prints_email" value="sim"> Vou mandar os prints por e-mail</label>
+        </div>
+        <label class="campo">Melhores dias e horários para a chamada com a Jessica <input name="horario_chamada" maxlength="160" placeholder="Ex.: terça ou quinta, de manhã"></label>
+        <label class="campo">Mais alguma coisa que a gente precisa saber <small>opcional</small> <textarea name="obs" rows="3" maxlength="1200"></textarea></label>
+        <div class="checks">
+          <label id="lb_ok"><input type="checkbox" name="ok_dados" value="sim"> Autorizo o uso destes dados só para o meu diagnóstico.</label>
+        </div>
+      </fieldset>
+
+      <p class="erro hide" id="erro" role="alert"></p>
+      <div class="dados-acoes">
+        <button class="bt linha" type="button" id="salvar">Salvar e continuar depois</button>
+        <button class="bt" type="submit" id="enviar">Enviar para análise</button>
+        <p class="salvo" id="salvo" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <div class="aviso-cod hide" id="feito" tabindex="-1">
+      <p class="eyebrow" id="feitoCod"></p>
+      <h2 class="h2">recebido, <em id="feitoNome"></em><span class="pt">.</span></h2>
+      <p class="lead" id="feitoTx"></p>
+      <div class="botoes">
+        <a class="bt" id="feitoWhats" href="#" rel="noopener">Chamar no WhatsApp</a>
+        <button class="bt linha" type="button" id="feitoEditar">Corrigir alguma coisa</button>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <img class="marca" src="assets/logo-jb-nome.svg" alt="Jessica Ballassa Confeitaria" width="1709" height="1552">
+    <p class="lema">aqui tem amor<span class="pt">.</span></p>
+    <div class="fim"><span>© 2026 Jessica Ballassa Confeitaria · CNPJ <span id="rodCnpj"></span></span><span><a href="privacidade.html">Privacidade</a></span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/config.js?v=56"></script>
+<script src="js/comum.js?v=45"></script>
+<script src="js/diagnostico-dados.js?v=1"></script>
+</body>
+</html>

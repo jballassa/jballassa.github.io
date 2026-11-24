@@ -123,6 +123,19 @@ window.JB = {
     resposta: "3 dias úteis"
   },
 
+  /* Diagnóstico de crescimento (diagnostico.html e diagnostico-dados.html), criado em 24/11/2026.
+     Pagamento antes de tudo. Enquanto pagamentoUrl estiver vazio, o botão abre o WhatsApp
+     da loja com a mensagem pronta e a equipe manda o link de pagamento. Com o link do
+     checkout em pagamentoUrl, o botão vai direto para o pagamento. */
+  diagnostico: {
+    preco: 497,
+    pagamentoUrl: "",
+    vagasMes: 4,
+    prazoAnalise: "7 dias úteis",
+    chamadaMin: "40 minutos",
+    duvidasDias: 15
+  },
+
   supabase: {
     url: "https://yudtseanlkhxkmnranmg.supabase.co",
     chave: "sb_publishable_M77s2Y-DZGl0xLZYYGKniA_ZdkxBO8O"
