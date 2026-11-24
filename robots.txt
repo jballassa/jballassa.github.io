@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /privacidade.html
+Disallow: /diagnostico-dados.html
 
 Sitemap: https://jballassa.github.io/sitemap.xml
