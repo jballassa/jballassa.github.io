@@ -82,6 +82,8 @@
 .campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--cacau);}
 .campo.falta{color:var(--coral-tx);}
 .campo.falta input,.campo.falta select,.campo.falta textarea{border-color:var(--coral-tx);}
+.dica-email{display:block;margin-top:8px;font-size:.8rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--cacau-2);line-height:1.5;}
+.dica-email button{border:0;background:none;padding:2px 0;margin-left:4px;cursor:pointer;font:inherit;font-weight:500;color:var(--cacau);text-decoration:underline;text-underline-offset:3px;}
 .linha2{display:grid;grid-template-columns:1fr;gap:0 18px;}
 @media (min-width:600px){ .linha2{grid-template-columns:1fr 1fr;} }
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}

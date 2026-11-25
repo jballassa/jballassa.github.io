@@ -1,6 +1,7 @@
 /* Parcerias e collabs. O formulário grava pelo banco (jb_parceria_criar) e o pedido
-   aparece no JB OS do gestor, em Parcerias. Se a rede falhar, o mesmo texto vai
-   pronto para o WhatsApp da loja, para ninguém perder a ideia. */
+   aparece no JB OS do gestor, em Parcerias. A resposta é sempre por e-mail (pedido
+   da Jessica, 25/11/2026), então o e-mail é obrigatório aqui e no banco. Se a rede
+   falhar, o mesmo texto vai pronto num e-mail para a JB, para ninguém perder a ideia. */
 (function(){
   const J = window.JB, P = J.parcerias || {};
 
@@ -21,25 +22,27 @@
   };
   const RECADOS = {
     nome: "Escreva o seu nome.",
-    contato: "Deixe um WhatsApp com DDD ou um e-mail para a gente responder.",
+    contato: "Deixe o seu e-mail: a resposta da parceria vai para ele.",
     instagram: "Esse @ do Instagram parece incompleto. Pode deixar em branco.",
     ideia: "Conte um pouco mais da ideia (pelo menos uma frase).",
     tipo: "Escolha o que você tem em mente.",
     com_quem: "Escolha com quem é a parceria.",
     formato: "Escolha o formato ou deixe em \"Ainda não sei\".",
-    limite: "Recebemos vários pedidos seus hoje. A gente já vai responder; se for urgente, chame no WhatsApp."
+    limite: "Recebemos vários pedidos seus hoje. A gente já vai responder pelo seu e-mail."
   };
 
   let QUEM = "jb";
   let ENVIANDO = false;
 
   /* links fixos da página */
-  const wa = linkWhats("Oi! Vim pela página de parcerias da JB :)");
+  const EMAIL_JB = P.email || "jbconfeitariaparcerias@gmail.com";
+  const linkEmailJB = (assunto, corpo) => "mailto:" + EMAIL_JB + "?subject=" + encodeURIComponent(assunto)
+    + (corpo ? "&body=" + encodeURIComponent(corpo) : "");
   $("lnkInstaJB").href = J.instagram; $("rodInsta").href = J.instagram;
   $("lnkInstaJes").href = P.instagramJessica || J.instagram;
   $("rodEnd").textContent = J.endereco + " · " + J.bairro;
   $("rodCnpj").textContent = J.cnpj;
-  $("feitoWhats").href = wa;
+  $("feitoEmail").href = linkEmailJB("Parceria com a JB");
 
   /* números */
   const ul = $("numerosLista");
@@ -79,10 +82,33 @@
   /* validação do lado de cá (o banco confere de novo) */
   function contatoOk(v){
     v = String(v || "").trim();
-    if(/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(v)) return true;
-    const d = v.replace(/\D/g, "");
-    return !/[a-z@]/i.test(v) && d.length >= 10 && d.length <= 13;
+    return v.length <= 120 && /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(v);
   }
+  /* erro de digitação comum no domínio: sugere, não bloqueia */
+  const DOMINIOS = {
+    "gmail.com": ["gmial.com","gmai.com","gmal.com","gamil.com","gmil.com","gnail.com","gmail.co","gmail.con","gmail.cm","gmail.com.br","gmaill.com"],
+    "hotmail.com": ["hotmal.com","hotmial.com","hotmai.com","hotmil.com","hotmail.co","hotmail.con","hotmaill.com"],
+    "outlook.com": ["outlok.com","outllok.com","outlook.co","outlook.con"],
+    "yahoo.com.br": ["yaho.com.br","yahoo.com.b","yahoo.combr"],
+    "icloud.com": ["iclod.com","icloud.co","icloud.con","icoud.com"]
+  };
+  function sugestaoEmail(v){
+    const m = String(v || "").trim().toLowerCase().match(/^([^@\s]+)@([^@\s]+)$/);
+    if(!m) return "";
+    for(const [certo, erros] of Object.entries(DOMINIOS)) if(erros.includes(m[2])) return m[1] + "@" + certo;
+    return "";
+  }
+  function mostrarDica(){
+    const dica = $("dicaEmail"), sug = sugestaoEmail($("contato").value);
+    dica.textContent = "";
+    dica.classList.toggle("hide", !sug);
+    if(!sug) return;
+    dica.append("Você quis dizer " + sug + "?");
+    const b = document.createElement("button"); b.type = "button"; b.textContent = "corrigir";
+    b.onclick = () => { $("contato").value = sug; dica.classList.add("hide"); $("contato").focus(); };
+    dica.appendChild(b);
+  }
+  $("contato").addEventListener("blur", mostrarDica);
   function instaOk(v){
     v = String(v || "").trim();
     if(!v) return true;
@@ -100,6 +126,7 @@
   }
   ["tipo","nome","contato","instagram","ideia"].forEach(id => $(id).addEventListener("input", () => {
     $(id).closest(".campo").classList.remove("falta");
+    if(id === "contato") $("dicaEmail").classList.add("hide");
     $("erro").classList.add("hide");
   }));
 
@@ -107,11 +134,12 @@
     const t = TIPOS[QUEM].find(([v]) => v === $("tipo").value);
     return t ? t[1] : "";
   }
-  function mensagemWhats(codigo){
+  function mensagemEmail(codigo){
     const l = [
       "Oi! Quero propor uma parceria " + (QUEM === "jessica" ? "com a Jessica" : "com a JB Confeitaria") + (codigo ? " (" + codigo + ")" : "") + ".",
       "Tipo: " + nomeTipo(),
       "Nome: " + $("nome").value.trim() + ($("marca").value.trim() ? ", " + $("marca").value.trim() : ""),
+      "E-mail: " + $("contato").value.trim(),
       $("instagram").value.trim() ? "Instagram: " + $("instagram").value.trim() : "",
       $("quando").value.trim() ? "Para quando: " + $("quando").value.trim() : "",
       "Ideia: " + $("ideia").value.trim()
@@ -134,7 +162,7 @@
     const payload = {
       com_quem: QUEM, tipo: $("tipo").value,
       nome: $("nome").value.trim(), marca: $("marca").value.trim(),
-      contato: $("contato").value.trim(), instagram: $("instagram").value.trim(),
+      contato: $("contato").value.trim().toLowerCase(), instagram: $("instagram").value.trim(),
       quando: $("quando").value.trim(), formato: $("formato").value,
       ideia: $("ideia").value.trim(), hp: $("site").value,
       origem: new URLSearchParams(location.search).get("utm_source") || "site"
@@ -168,14 +196,16 @@
     $("feitoNome").textContent = payload.nome.split(" ")[0].toLowerCase();
     $("feitoCodigo").textContent = codigo ? "Pedido " + codigo : "";
     $("feitoCodigo").classList.toggle("hide", !codigo);
-    $("feitoWhats").href = linkWhats(mensagemWhats(codigo));
+    const assunto = "Parceria com a JB" + (codigo ? " (" + codigo + ")" : "");
     if(falhou){
-      $("feitoTexto").textContent = "Não conseguimos registrar agora, mas a sua ideia já está escrita na mensagem do WhatsApp. É só tocar no botão e enviar.";
-      $("feitoWhats").textContent = "Enviar pelo WhatsApp";
+      $("feitoEmail").href = linkEmailJB(assunto, mensagemEmail(codigo));
+      $("feitoTexto").textContent = "Não conseguimos registrar agora, mas a sua ideia já está escrita num e-mail para " + EMAIL_JB + ". É só tocar no botão e enviar.";
+      $("feitoEmail").textContent = "Enviar por e-mail";
     } else {
+      $("feitoEmail").href = linkEmailJB(assunto);
       $("feitoTexto").textContent = "A sua ideia chegou para a gente. Respondemos em até " + (P.resposta || "3 dias úteis")
-        + " pelo contato que você deixou. Se for urgente, chame no WhatsApp ou escreva para " + (P.email || "jbconfeitariaparcerias@gmail.com") + ".";
-      $("feitoWhats").textContent = "Chamar no WhatsApp";
+        + " no e-mail " + payload.contato + ". Se não aparecer, olhe também a caixa de spam ou promoções. Quer completar alguma coisa? Escreva para " + EMAIL_JB + ".";
+      $("feitoEmail").textContent = "Escrever para a JB";
     }
     $("feito").focus({ preventScroll: true });
     $("contar").scrollIntoView({ behavior: "smooth", block: "start" });

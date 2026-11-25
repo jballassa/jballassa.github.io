@@ -21,7 +21,7 @@
 <link rel="preload" href="assets/fonts/bricolage-jb-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="css/jb.css?v=44">
-<link rel="stylesheet" href="css/parcerias.css?v=2">
+<link rel="stylesheet" href="css/parcerias.css?v=3">
 </head>
 <body>
 
@@ -58,7 +58,7 @@
       <div class="surge">
         <p class="eyebrow">Parcerias e collabs</p>
         <h1 class="display">vamos criar algo <em>doce juntos<span class="pt">.</span></em></h1>
-        <p class="lead">Marcas, perfis, empresas e eventos que querem fazer alguma coisa com a JB Confeitaria ou com a Jessica. Conta a sua ideia aqui: a gente lê tudo e responde pelo contato que você deixar.</p>
+        <p class="lead">Marcas, perfis, empresas e eventos que querem fazer alguma coisa com a JB Confeitaria ou com a Jessica. Conta a sua ideia aqui: a gente lê tudo e responde por e-mail.</p>
         <div class="botoes">
           <a class="bt" href="#contar" id="btHeroiIdeia">Contar minha ideia</a>
           <a class="bt linha" href="assets/jb-midia-kit.pdf" target="_blank" rel="noopener" id="btMidiaKit">Ver o mídia kit</a>
@@ -120,7 +120,7 @@
       <h2 class="h2">simples <em>assim<span class="pt">.</span></em></h2>
       <ol class="passos-parc">
         <li><i>1</i><div><b>Você conta a ideia</b><span>No formulário logo abaixo. Leva 2 minutos.</span></div></li>
-        <li><i>2</i><div><b>A gente responde</b><span>Em até 3 dias úteis, pelo WhatsApp ou e-mail que você deixar.</span></div></li>
+        <li><i>2</i><div><b>A gente responde</b><span>Em até 3 dias úteis, no e-mail que você deixar.</span></div></li>
         <li><i>3</i><div><b>Alinhamos os detalhes</b><span>Formato, data, quantidade e valor, tudo combinado antes.</span></div></li>
         <li><i>4</i><div><b>Mão na massa</b><span>E no dia, tudo do jeitinho que foi combinado.</span></div></li>
       </ol>
@@ -165,8 +165,9 @@
           </label>
         </div>
         <div class="linha2">
-          <label class="campo" id="lbContato">WhatsApp ou e-mail
-            <input type="text" id="contato" autocomplete="email" maxlength="120" required placeholder="(11) 99999-9999">
+          <label class="campo" id="lbContato">Seu e-mail <small>a resposta vai para ele</small>
+            <input type="email" id="contato" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="120" required placeholder="voce@email.com">
+            <span class="dica-email hide" id="dicaEmail" aria-live="polite"></span>
           </label>
           <label class="campo" id="lbInsta">Instagram <small>opcional</small>
             <input type="text" id="instagram" maxlength="60" placeholder="@seuperfil" autocapitalize="off" spellcheck="false">
@@ -200,7 +201,7 @@
         <h2 class="h2">recebido, <em id="feitoNome"></em><span class="pt">.</span></h2>
         <p class="lead" id="feitoTexto"></p>
         <div class="botoes">
-          <a class="bt" id="feitoWhats" href="#" rel="noopener">Chamar no WhatsApp</a>
+          <a class="bt" id="feitoEmail" href="#" rel="noopener">Escrever para a JB</a>
           <a class="bt linha" href="index.html">Voltar ao início</a>
         </div>
       </div>
@@ -240,6 +241,6 @@
 
 <script src="js/config.js?v=55"></script>
 <script src="js/comum.js?v=45"></script>
-<script src="js/parcerias.js?v=2"></script>
+<script src="js/parcerias.js?v=3"></script>
 </body>
 </html>
